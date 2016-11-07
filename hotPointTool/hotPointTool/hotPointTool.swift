@@ -14,27 +14,27 @@ class hotPointTool: NSObject {
     
     var newfilePath : String
     
-    var fileAry : Array<String>
+    var fileAry : [String]
     
     override init() {
         
         self.fileAry = []
         
         // ideamakePath
-        self.filePath = "/Users/keney/Documents/备份/demo/hot"
+        //self.filePath = "/Users/keney/Documents/备份/demo/hot"
+        
+        // keneyPath
+        self.filePath = "/Users/liangkang/Documents/未命名文件夹/hotPointTool/hot"
         
         self.newfilePath = self.filePath + "/hotspots"
         
-        //print("newfilePath: \(self.newfilePath)" )
-        
-        
     }
     
-    func foundItemInDirector() -> Array<String> {
+    func foundItemInDirector() -> [String] {
         
         let fm = FileManager.default
         
-        var fileAry : Array<String> = []
+        var fileAry : [String] = []
         
         do {
             
@@ -50,9 +50,9 @@ class hotPointTool: NSObject {
     
     }
     
-    func getItemAryNameInDirector() -> Array<String> {
+    func getItemAryNameInDirector() -> [String] {
         
-        var ary : Array<String> = []
+        var ary : [String] = []
         
         let itemAry = self.foundItemInDirector()
         
@@ -73,9 +73,9 @@ class hotPointTool: NSObject {
         return self.fileAry
     }
     
-    func getItemUrlPath() -> Array<String> {
+    func getObjectUrlPath() -> [String] {
         
-        var upAry : Array<String> = []
+        var upAry : [String] = []
         
         let fileNameAry = self.getItemAryNameInDirector()
         
@@ -83,7 +83,7 @@ class hotPointTool: NSObject {
             
             var subXmlPath = self.newfilePath
             
-            subXmlPath += "/\(item)"
+            subXmlPath += "/\(item)/"
             
             if item.hasSuffix("png"){}else{
             
@@ -97,6 +97,34 @@ class hotPointTool: NSObject {
         
     }
     
+    
+    func getItemUrlPath() -> [String] {
+        
+        var itemUrl : [String] = []
+        
+        let fm = FileManager.default
+       
+        do {
+            
+            let url : URL = URL.init(fileURLWithPath: self.filePath)
+            
+            let newUrls = try fm.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
+            
+            for item in newUrls {
+
+                //print("获取待处理url： \(item.path)")
+                
+                itemUrl.append(item.path)
+                
+            }
+        } catch  {
+            
+        }
+        
+       
+        return itemUrl
+        
+    }
     
     func creatFile(){
         
@@ -123,32 +151,15 @@ class hotPointTool: NSObject {
         
     func copyFileToObject(){
         
-        let fm = FileManager.default
-        
-        let urlAry = self.getItemUrlPath()
-        
-        print(urlAry)
-        
-        do{
+        // 获取待拷贝的文件路径集合
+         self.getItemUrlPath()
 
-            let xmlUrl = URL.init(fileURLWithPath: self.filePath)
-            
-            let ary = try fm.contentsOfDirectory(at: xmlUrl, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
-            
+        // 获取目标文件夹路径集合
+        //let urlAry = self.getObjectUrlPath()
+        
+        // 把当前的文件 cope 到新的路径？
+        
 
-            
-
-            
-        }catch{
-            
-            
-        
-        }
-        
-        
-        
-        
-        
         
     }
 

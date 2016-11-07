@@ -20,6 +20,7 @@ class hotPointTool: NSObject {
         
         self.fileAry = []
         
+        // ideamakePath
         self.filePath = "/Users/keney/Documents/备份/demo/hot"
         
         self.newfilePath = self.filePath + "/hotspots"

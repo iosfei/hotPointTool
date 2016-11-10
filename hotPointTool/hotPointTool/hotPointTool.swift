@@ -21,10 +21,10 @@ class hotPointTool: NSObject {
         self.fileAry = []
         
         // ideamakePath
-        //self.filePath = "/Users/keney/Documents/备份/demo/hot"
+        self.filePath = "/Users/keney/Documents/备份/demo/hotPointTool/hot"
         
         // keneyPath
-        self.filePath = "/Users/liangkang/Documents/未命名文件夹/hotPointTool/hot"
+        //self.filePath = "/Users/liangkang/Documents/未命名文件夹/hotPointTool/hot"
         
         self.newfilePath = self.filePath + "/hotspots"
         

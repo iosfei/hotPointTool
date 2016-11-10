@@ -152,10 +152,13 @@ class hotPointTool: NSObject {
     func copyFileToObject(){
         
         // 获取待拷贝的文件路径集合
-         self.getItemUrlPath()
+        let itemUrl = self.getItemUrlPath()
 
         // 获取目标文件夹路径集合
-        //let urlAry = self.getObjectUrlPath()
+        let objUrl = self.getObjectUrlPath()
+        
+        
+        
         
         // 把当前的文件 cope 到新的路径？
         

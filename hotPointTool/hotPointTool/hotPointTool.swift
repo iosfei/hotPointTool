@@ -174,47 +174,65 @@ class hotPointTool: NSObject {
             for fileName in self.fileAry {
                 
                 
-                if(fileName == "camera" || fileName == "DS_Store" || fileName == "hotspots" || fileName.hasSuffix("png")){}else{
+                /* if
+                 if(fileName == "camera" || fileName == "DS_Store" || fileName == "hotspots" || fileName.hasSuffix("png")){}else{
+                 
+                 let subFilePath = newfilePath +  "/" + fileName
+                 
+                 do{
+                 
+                 try self.fm.createDirectory(atPath: subFilePath, withIntermediateDirectories: true, attributes: nil)
+                 
+                 }catch{}
+                 
+                 }
+                 */
+                
+                 // guard
+                 guard fileName.hasSuffix("hotspots")  else {
+                 
+                 let subFilePath = newfilePath +  "/" + fileName
+                 
+                 do{
+                 
+                 try self.fm.createDirectory(atPath: subFilePath, withIntermediateDirectories: true, attributes: nil)
+                 
+                 }catch{}
+                 
+                 continue
                     
-                    let subFilePath = newfilePath +  "/" + fileName
-                    
-                    do{
-                        
-                        try self.fm.createDirectory(atPath: subFilePath, withIntermediateDirectories: true, attributes: nil)
-                        
-                    }catch{}
-                    
-                }
+                 }
+ 
+        }
 
-            }
+
     }
     
     func copyFileToObject(){
         
          // 获取待拷贝的文件路径集合
-         let itemUrl = self.getItemUrlPath()
+         //let itemUrl = self.getItemUrlPath()
         
          
          // 获取目标文件夹路径集合
+         //let objUrl = self.getObjectUrlPath()
         
-          let objUrl = self.getObjectUrlPath()
-
-          let atPath = itemUrl[0]
-          let toPath = objUrl[0]
+         do {
+         
+         //try self.fm.moveItem(at: itemUrl[0], to: objUrl[0])
+         
+         let atPath = "/Users/keney/Documents/备份/demo/hotPointTool/hot/博爱路.xml"
+         
+         let toPath  = "/Users/keney/Documents/备份/demo/hotPointTool/hot/hotspots/博爱路/博爱路.xml"
+         
+         try self.fm.moveItem(atPath: atPath, toPath: toPath)
+         
+         } catch let error{
+         
+         print("moveItem文件出错\(error)")
+            
+         }
         
-        do {
-            
-            //try self.fm.moveItem(at: itemUrl[0], to: objUrl[0])
-            
-
-            try self.fm.moveItem(atPath: atPath, toPath: toPath)
-            
-            
-            //try self.fm.copyItem(atPath: itemUrl[0], toPath: objUrl[0])
-            
-        } catch  {
-        
-        }
     
     }
 

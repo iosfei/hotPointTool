@@ -215,16 +215,32 @@ class hotPointTool: NSObject {
         
          // 获取待拷贝的文件路径集合
          let itemUrl = self.getItemUrlPath()
-        
+        print(itemUrl)
          
          // 获取目标文件夹路径集合
          let objUrl = self.getObjectUrlPath()
+        print(objUrl)
         
+        
+        for (index, _) in itemUrl.enumerated(){
+        
+            let atPath = itemUrl[index]
+            let toPath = objUrl[index]
+            
+            
+            do {
+                
+                try self.fm.copyItem(atPath: atPath, toPath: toPath)
+            
+            }catch{}
+        }
+        
+        /*
          do {
-        
+         
          
          let atPath = itemUrl[1]
-
+         
          let toPath  = objUrl[1]
          
          try self.fm.copyItem(atPath: atPath, toPath: toPath)
@@ -232,8 +248,9 @@ class hotPointTool: NSObject {
          } catch let error{
          
          print("moveItem文件出错\(error)")
-            
+         
          }
+         */
      
     
     }

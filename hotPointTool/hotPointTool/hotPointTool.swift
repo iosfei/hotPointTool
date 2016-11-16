@@ -107,7 +107,7 @@ class hotPointTool: NSObject {
          
          var subXmlPath = self.newfilePath
          
-         subXmlPath = subXmlPath + "/\(item)/" + "\(item).xml"
+         subXmlPath = subXmlPath + "/\(item)/" + "hotspotdatafile.xml"
          
          if item.hasSuffix("png"){}else{
          
@@ -176,7 +176,6 @@ class hotPointTool: NSObject {
         
             for fileName in self.fileAry {
                 
-                
                 /* if
                  if(fileName == "camera" || fileName == "DS_Store" || fileName == "hotspots" || fileName.hasSuffix("png")){}else{
                  
@@ -205,7 +204,6 @@ class hotPointTool: NSObject {
                  continue
                     
                  }
- 
         }
 
 
@@ -215,11 +213,9 @@ class hotPointTool: NSObject {
         
          // 获取待拷贝的文件路径集合
          let itemUrl = self.getItemUrlPath()
-        print(itemUrl)
          
          // 获取目标文件夹路径集合
          let objUrl = self.getObjectUrlPath()
-        print(objUrl)
         
         
         for (index, _) in itemUrl.enumerated(){
@@ -235,23 +231,6 @@ class hotPointTool: NSObject {
             }catch{}
         }
         
-        /*
-         do {
-         
-         
-         let atPath = itemUrl[1]
-         
-         let toPath  = objUrl[1]
-         
-         try self.fm.copyItem(atPath: atPath, toPath: toPath)
-         
-         } catch let error{
-         
-         print("moveItem文件出错\(error)")
-         
-         }
-         */
-     
     
     }
 

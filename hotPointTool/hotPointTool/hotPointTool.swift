@@ -27,7 +27,7 @@ class hotPointTool: NSObject {
         self.fileAry = []
         
         // ideamakePath
-        self.filePath = "/Users/keney/Documents/备份/demo/hotPointTool/hot"
+        self.filePath = "/Users/keney/Desktop/翠湖鸟瞰打点"
         
         // keneyPath
         //self.filePath = "/Users/liangkang/Documents/未命名文件夹/hotPointTool/hot"
@@ -175,34 +175,27 @@ class hotPointTool: NSObject {
         
         var itemUrl : [String] = []
        
-        if fileType == "xml"{
         
-            do {
-                
-                let url : URL = URL.init(fileURLWithPath: self.filePath)
-                
-                let newUrls = try self.fm.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
+        let url : URL = URL.init(fileURLWithPath: self.filePath)
+       
+        do {
+            
+             let newUrls = try self.fm.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
+            
+            if fileType == "xml"{
                 
                 for item in newUrls {
                     
-                    if item.absoluteString.hasSuffix("xml"){
+                    if item.absoluteString.hasSuffix("xml") {
                         
                         itemUrl.append(item.path)
                         
-                        //print("获取待处理url： \(item.path)")
+                        print("获取待处理url： \(item.path)")
                     }
                     
                 }
-            } catch {}
-            
-            
-        }else if fileType == "png"{
-        
-            do {
                 
-                let url : URL = URL.init(fileURLWithPath: self.filePath)
-                
-                let newUrls = try self.fm.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
+            }else if fileType == "png"{
                 
                 for item in newUrls {
                     
@@ -214,12 +207,11 @@ class hotPointTool: NSObject {
                     }
                     
                 }
-            } catch {}
+            }
+            
+        }catch{ }
         
-        
-        }
-        
-        
+
         return itemUrl
         
     }
@@ -260,18 +252,13 @@ class hotPointTool: NSObject {
     
     func copyFileToObject(){
         
-         // 获取xml待拷贝的文件路径集合
+         // xml 拷贝
         let itemUrl = self.getItemUrlPath(fileType: "xml")
-        
-         // 通xml过获取目标文件夹路径集合copy到目标方法
         let objUrl = self.getObjectUrlPath(fileType: "xml")
         
-        
+        // png 拷贝
         let pngUrl = self.getItemUrlPath(fileType: "png")
-        
         let pngObUlr = self.getObjectUrlPath(fileType: "png")
-        
-        
         
          
          for (index, _) in itemUrl.enumerated(){

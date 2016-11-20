@@ -27,10 +27,10 @@ class hotPointTool: NSObject {
         self.fileAry = []
         
         // ideamakePath
-        self.filePath = "/Users/keney/Desktop/翠湖鸟瞰打点"
+        //self.filePath = "/Users/keney/Desktop/翠湖鸟瞰打点"
         
         // keneyPath
-        //self.filePath = "/Users/liangkang/Documents/未命名文件夹/hotPointTool/hot"
+        self.filePath = "/Users/liangkang/Documents/未命名文件夹/hotPointTool/hot"
         
         self.newfilePath = self.filePath + "/hotspots"
         
@@ -44,14 +44,11 @@ class hotPointTool: NSObject {
         
         do {
             
-            try self.fm.createDirectory(atPath: self.newfilePath, withIntermediateDirectories: true, attributes: nil)
-
-            //fileAry = try fm.contentsOfDirectory(atPath: self.filePath)
-            
             // 根据xml文件 创建对应的文件夹
+            try self.fm.createDirectory(atPath: self.newfilePath, withIntermediateDirectories: true, attributes: nil)
+            
             for item in try self.fm.contentsOfDirectory(atPath: self.filePath) {
                 
-              
                 if item.hasSuffix("xml"){
                 
                     fileAry.append(item)
@@ -60,7 +57,6 @@ class hotPointTool: NSObject {
             
         } catch {}
 
-        //print("带后缀的 xml 文件名： \(fileAry)")
         
        return fileAry
     
@@ -192,6 +188,7 @@ class hotPointTool: NSObject {
                         
                         print("获取待处理url： \(item.path)")
                     }
+                    
                     
                 }
                 

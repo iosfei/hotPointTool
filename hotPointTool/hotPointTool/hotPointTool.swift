@@ -299,10 +299,20 @@ class hotPointTool: NSObject {
             
             let xmlData = try Data.init(contentsOf: xmlUrl)
             
-            let xmlDoc = try AEXMLDocument.init(xml: xmlData)
+            //let xmlDoc = try AEXMLDocument.init(xml: xmlData)
             
-            print("解析xml： \(xmlDoc.xml.utf8)")
+            var options = AEXMLOptions()
+            options.documentHeader.version = 2.0
+            options.documentHeader.encoding = "utf-8"
+            options.documentHeader.standalone = "yes"
             
+            let xmlDoc = try AEXMLDocument(xml: xmlData, options: options)
+            
+            //print("解析xml： \(xmlDoc.root["hotspot"]["frames"].all)")
+            print("解析xml： \(xmlDoc.xml)")
+            
+ 
+        
         } catch let error{
         
             print(error)

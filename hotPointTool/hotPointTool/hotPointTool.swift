@@ -16,23 +16,41 @@ class hotPointTool: NSObject {
     
     var fileAry : [String]
     
+    var imagePath : [String]
+    
+    let hotspots = "hotspots"
+    
+    let imageFile = "images"
+    
+    let xmlName = "hotspotdatafile.xml"
+    
+    let pngName = "icon@2x.png"
+    
+    var imageWidth : Double!
+    
+    var imageheight : Double!
     
     lazy var fm: FileManager = {
     
         return FileManager.default
     }()
     
+    
     override init() {
+        
+        
         
         self.fileAry = []
         
-        // ideamakePath
-        self.filePath = "/Users/keney/Desktop/翠湖鸟瞰打点"
+        self.imagePath = []
         
+        // ideamakePath
+        self.filePath = "/Users/keney/Desktop/test"
+       
         // keneyPath
         //self.filePath = "/Users/liangkang/Documents/未命名文件夹/hotPointTool/hot"
         
-        self.newfilePath = self.filePath + "/hotspots"
+        self.newfilePath = self.filePath + "/\(hotspots)"
         
     }
     
@@ -46,9 +64,6 @@ class hotPointTool: NSObject {
             
             try self.fm.createDirectory(atPath: self.newfilePath, withIntermediateDirectories: true, attributes: nil)
 
-            //fileAry = try fm.contentsOfDirectory(atPath: self.filePath)
-            
-            // 根据xml文件 创建对应的文件夹
             for item in try self.fm.contentsOfDirectory(atPath: self.filePath) {
                 
               
@@ -59,8 +74,6 @@ class hotPointTool: NSObject {
             }
             
         } catch {}
-
-        //print("带后缀的 xml 文件名： \(fileAry)")
         
        return fileAry
     
@@ -81,7 +94,7 @@ class hotPointTool: NSObject {
                 let charset = CharacterSet(charactersIn:".xml")
                 let itemName = item.trimmingCharacters(in: charset)
                 
-                if(itemName == "camera" || itemName == "DS_Store" || itemName == "hotspots"){}else{
+                if(itemName == "camera" || itemName == "DS_Store" || itemName == "\(hotspots)"){}else{
                     
                     ary.append(itemName)
                     
@@ -96,7 +109,7 @@ class hotPointTool: NSObject {
             let charset = CharacterSet(charactersIn:".png")
             let itemName = item.trimmingCharacters(in: charset)
             
-            if(itemName == "camera" || itemName == "DS_Store" || itemName == "hotspots"){}else{
+            if(itemName == "camera" || itemName == "DS_Store" || itemName == "\(hotspots)"){}else{
                 
                 ary.append(itemName)
                 
@@ -125,7 +138,7 @@ class hotPointTool: NSObject {
         
             for item in fileNameAry {
                 
-                let subXmlPath = self.newfilePath + "/\(item)/" + "hotspotdatafile.xml"
+                let subXmlPath = self.newfilePath + "/\(item)/" + "\(xmlName)"
                 
                 if item.hasSuffix("png"){}else{
                     
@@ -133,7 +146,6 @@ class hotPointTool: NSObject {
                     
                 }
                 
-                //print(subXmlPath)
             }
         
         }else if fileType == "png"{
@@ -141,33 +153,16 @@ class hotPointTool: NSObject {
             
             for item in fileNameAry {
                 
-                let subXmlPath = self.newfilePath + "/\(item)/" + "icon@2x.png"
+                let subXmlPath = self.newfilePath + "/\(item)/\(imageFile)/" + "\(pngName)"
                 
-                    
                     upAry.append(subXmlPath)
                     
                 }
-                
-                //print(subXmlPath)
+            
             }
         
         return upAry
         
-        /*
-         // 根据 newfilePath 获取目标路径
-         let url : URL = URL.init(fileURLWithPath: self.newfilePath)
-         
-         do {
-         
-         let obAry = try self.fm.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
-         
-         for item in obAry {
-         
-         upAry.append(item.path)
-         }
-         
-         } catch { }
-         */
     }
     
     // 获取待处理 xml, png 文件夹的路径
@@ -186,11 +181,10 @@ class hotPointTool: NSObject {
                 
                 for item in newUrls {
                     
-                    if item.absoluteString.hasSuffix("xml") {
+                    if item.absoluteString.hasSuffix("xml"){
                         
                         itemUrl.append(item.path)
                         
-                        print("获取待处理url： \(item.path)")
                     }
                     
                 }
@@ -202,8 +196,6 @@ class hotPointTool: NSObject {
                     if item.absoluteString.hasSuffix("png"){
                         
                         itemUrl.append(item.path)
-                        
-                        //print("获取待处理url： \(item.path)")
                     }
                     
                 }
@@ -216,51 +208,38 @@ class hotPointTool: NSObject {
         
     }
     
-    // 创建对应的文件夹
+    // 创建热点对应的文件夹
     func creatFile(){
         
             self.fileAry = self.getFileNameAryInDirector(fileType:"xml")
         
             for fileName in self.fileAry {
                 
-                /* if 判断
-                 if(fileName == "camera" || fileName == "DS_Store" || fileName == "hotspots" || fileName.hasSuffix("png")){}else{
-                 
-                 let subFilePath = newfilePath +  "/" + fileName
-                 
-                 do{
-                 
-                 try self.fm.createDirectory(atPath: subFilePath, withIntermediateDirectories: true, attributes: nil)
-                 
-                 }catch{}
-                 
-                 }
-                 */
-                    
-                    let subFilePath = newfilePath +  "/" + fileName
-                    
+                    let xmlFilePath = newfilePath +  "/" + fileName
+                    let imageFilePath = xmlFilePath + "/\(imageFile)"
+                
                     do{
                         
-                        try self.fm.createDirectory(atPath: subFilePath, withIntermediateDirectories: true, attributes: nil)
+                        try self.fm.createDirectory(atPath: xmlFilePath, withIntermediateDirectories: true, attributes: nil)
+                        
+                        try self.fm.createDirectory(atPath: imageFilePath, withIntermediateDirectories: true, attributes: nil)
                         
                     }catch{}
-
         }
-
 
     }
     
+    // copy文件到对应目录
     func copyFileToObject(){
         
-         // xml 拷贝
+         // xml 文件
         let itemUrl = self.getItemUrlPath(fileType: "xml")
         let objUrl = self.getObjectUrlPath(fileType: "xml")
         
-        // png 拷贝
+        // png 文件
         let pngUrl = self.getItemUrlPath(fileType: "png")
         let pngObUlr = self.getObjectUrlPath(fileType: "png")
         
-         
          for (index, _) in itemUrl.enumerated(){
          
          let atPath = itemUrl[index]
@@ -269,7 +248,6 @@ class hotPointTool: NSObject {
          let atPng = pngUrl[index]
          let toPng = pngObUlr[index]
          
-         
          do {
          
          try self.fm.copyItem(atPath: atPath, toPath: toPath)
@@ -277,11 +255,66 @@ class hotPointTool: NSObject {
          try self.fm.copyItem(atPath: atPng, toPath: toPng)
          
          }catch{}
-         }
+            
+        }
 
-        
-        
-    
     }
 
+    // 获取 png 信息
+    func getPngMessges(){
+        
+        let pngAry = self.getObjectUrlPath(fileType: "png")
+        
+        var data: Data?
+        
+        do {
+        
+            data = try Data.init(contentsOf: URL.init(fileURLWithPath: pngAry[0], isDirectory: false))
+        
+        } catch {}
+        
+        if #available(OSX 10.12, *) {
+            
+            let image = NSImageView.init(image: NSImage.init(data: data!)!)
+
+            self.imageWidth = Double(image.image!.size.width * 0.5)
+            
+            self.imageheight = Double(image.image!.size.height * 0.5)
+            
+        } else {}
+        
+    }
+    
+    
+    // xml 编辑
+    func editXML(){
+        
+        let firtXml = self.getObjectUrlPath(fileType: "xml")
+        
+        let xmlStr = firtXml[0]
+        
+        let xmlUrl : URL = URL.init(fileURLWithPath: xmlStr, isDirectory: false)
+        
+        do {
+            
+            let xmlData = try Data.init(contentsOf: xmlUrl)
+            
+            let xmlDoc = try AEXMLDocument.init(xml: xmlData)
+            
+            print("解析xml： \(xmlDoc.xml.utf8)")
+            
+        } catch let error{
+        
+            print(error)
+            
+        
+        }
+        
+        
+        
+        
+        
+    }
+    
+    
 }

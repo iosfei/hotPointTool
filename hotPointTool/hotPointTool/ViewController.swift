@@ -19,7 +19,11 @@ class ViewController: NSViewController {
              vc.creatFile()
         
              vc.copyFileToObject()
-   
+        
+             vc.getPngMessges()
+        
+             vc.editXML()
+        
     }
     
     

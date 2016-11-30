@@ -45,7 +45,7 @@ class hotPointTool: NSObject {
         self.imagePath = []
 
         // ideamakePath
-        self.filePath = "/Users/keney/Desktop/20161129珊瑚宫殿/新加打点"
+        self.filePath = "/Users/keney/Documents/备份/demo/hotPointTool/hot"
        
         // keneyPath
         //self.filePath = "/Users/liangkang/Documents/未命名文件夹/hotPointTool/hot"

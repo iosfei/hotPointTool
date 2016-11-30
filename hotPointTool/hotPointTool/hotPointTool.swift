@@ -34,7 +34,7 @@ class hotPointTool: NSObject {
     
         return FileManager.default
     }()
-    
+
     
     override init() {
         
@@ -293,36 +293,24 @@ class hotPointTool: NSObject {
             
             self.imageheight = Double(image.image!.size.height * 0.5)
             
-        } else {}
-        
+        }
     }
     
-    
-    // xml 编辑
-    func editXML(){
+    func getXMLOriginSize(){
         
         let firtXml = self.getObjectUrlPath(fileType: "xml")
         
         let xmlStr = firtXml[0]
         
-        let xmlUrl : URL = URL.init(fileURLWithPath: xmlStr, isDirectory: false)
-        
         do {
             
-            let xmlData = try Data.init(contentsOf: xmlUrl)
+            let str = try String.init(contentsOfFile: xmlStr, encoding: String.Encoding.isoLatin2)
             
+            let substr1:String = str.substring(with: str.index(str.startIndex, offsetBy: 9)..<str.index(str.startIndex, offsetBy: 38))
             
- 
-        
-        } catch let error{
-        
-            print(error)
+            print(substr1)
             
-        
-        }
-        
-        
-        //tet
+        } catch let error{ print(error) }
         
         
     }

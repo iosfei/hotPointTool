@@ -22,7 +22,7 @@ class ViewController: NSViewController {
         
              vc.getPngMessges()
         
-             vc.editXML()
+             vc.getXMLOriginSize()
         
     }
     

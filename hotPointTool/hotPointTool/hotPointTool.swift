@@ -41,9 +41,9 @@ class hotPointTool: NSObject {
         
         
         self.fileAry = []
-        
+
         self.imagePath = []
-        
+
         // ideamakePath
         self.filePath = "/Users/keney/Desktop/20161129珊瑚宫殿/新加打点"
        
@@ -170,14 +170,13 @@ class hotPointTool: NSObject {
         
         var itemUrl : [String] = []
        
+        if fileType == "xml"{
         
-        let url : URL = URL.init(fileURLWithPath: self.filePath)
-       
-        do {
-            
-             let newUrls = try self.fm.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
-            
-            if fileType == "xml"{
+            do {
+                
+                let url : URL = URL.init(fileURLWithPath: self.filePath)
+                
+                let newUrls = try self.fm.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
                 
                 for item in newUrls {
                     
@@ -188,8 +187,16 @@ class hotPointTool: NSObject {
                     }
                     
                 }
+            } catch {}
+            
+            
+        }else if fileType == "png"{
+        
+            do {
                 
-            }else if fileType == "png"{
+                let url : URL = URL.init(fileURLWithPath: self.filePath)
+                
+                let newUrls = try self.fm.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
                 
                 for item in newUrls {
                     
@@ -199,11 +206,12 @@ class hotPointTool: NSObject {
                     }
                     
                 }
-            }
-            
-        }catch{ }
+            } catch {}
         
-
+        
+        }
+        
+        
         return itemUrl
         
     }
@@ -232,12 +240,16 @@ class hotPointTool: NSObject {
     // copy文件到对应目录
     func copyFileToObject(){
         
-         // xml 文件
+         // 获取xml待拷贝的文件路径集合
         let itemUrl = self.getItemUrlPath(fileType: "xml")
+        
+         // 通xml过获取目标文件夹路径集合copy到目标方法
         let objUrl = self.getObjectUrlPath(fileType: "xml")
         
+
         // png 文件
         let pngUrl = self.getItemUrlPath(fileType: "png")
+        
         let pngObUlr = self.getObjectUrlPath(fileType: "png")
         
          for (index, _) in itemUrl.enumerated(){

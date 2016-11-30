@@ -1,0 +1,2 @@
+<hotspot bounds="{{0., 0.}, {50.0, 50.0}}" anchorPoint="{.5, .928}" originSize="{2048.0, 1536.0}" center="{0., 0.}">
+	<backgroundImage state="0" value="images/icon.png" />

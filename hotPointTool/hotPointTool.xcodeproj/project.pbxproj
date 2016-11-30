@@ -20,6 +20,7 @@
 		3DEACB651DEEA78300750DC3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3DEACB5F1DEEA78300750DC3 /* Info.plist */; };
 		3DEACB661DEEA78300750DC3 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEACB601DEEA78300750DC3 /* Options.swift */; };
 		3DEACB671DEEA78300750DC3 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEACB611DEEA78300750DC3 /* Parser.swift */; };
+		3DEACB6B1DEEC3B500750DC3 /* hotspotdatafile.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3DEACB6A1DEEC3B500750DC3 /* hotspotdatafile.xml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		3DEACB5F1DEEA78300750DC3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3DEACB601DEEA78300750DC3 /* Options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
 		3DEACB611DEEA78300750DC3 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		3DEACB6A1DEEC3B500750DC3 /* hotspotdatafile.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = hotspotdatafile.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				3D1337DC1DC05F4D00A256A6 /* hotPointToolTests */,
 				3D1337E71DC05F4D00A256A6 /* hotPointToolUITests */,
 				3D1337C91DC05F4D00A256A6 /* Products */,
+				3DEACB691DEEC3B500750DC3 /* hotspotdatafile */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,6 +154,15 @@
 				3DEACB611DEEA78300750DC3 /* Parser.swift */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		3DEACB691DEEC3B500750DC3 /* hotspotdatafile */ = {
+			isa = PBXGroup;
+			children = (
+				3DEACB6A1DEEC3B500750DC3 /* hotspotdatafile.xml */,
+			);
+			name = hotspotdatafile;
+			path = hotPointTool/hotspotdatafile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D1337D01DC05F4D00A256A6 /* Assets.xcassets in Resources */,
+				3DEACB6B1DEEC3B500750DC3 /* hotspotdatafile.xml in Resources */,
 				3D1337D31DC05F4D00A256A6 /* Main.storyboard in Resources */,
 				3DEACB651DEEA78300750DC3 /* Info.plist in Resources */,
 			);

@@ -293,6 +293,7 @@ class hotPointTool: NSObject {
             
             self.imageheight = Double(image.image!.size.height * 0.5)
             
+            
         }
     }
     
@@ -306,9 +307,29 @@ class hotPointTool: NSObject {
             
             let str = try String.init(contentsOfFile: xmlStr, encoding: String.Encoding.isoLatin2)
             
-            let substr1:String = str.substring(with: str.index(str.startIndex, offsetBy: 9)..<str.index(str.startIndex, offsetBy: 38))
+            let originSize = str.substring(with: str.index(str.startIndex, offsetBy: 9)..<str.index(str.startIndex, offsetBy: 38))
             
-            print(substr1)
+            let frame = str.substring(with: str.index(str.startIndex, offsetBy: 39)..<str.endIndex)
+            
+            let imageSize = "\(self.imageWidth!), \(self.imageheight!)"
+            
+            let xmlUrl = Bundle.main.url(forResource: "hotspotdatafile", withExtension: "xml")
+            
+            var xmlStr = try String.init(contentsOf: xmlUrl!)
+            
+            
+            // frame
+            xmlStr.replaceSubrange(xmlStr.index(xmlStr.startIndex, offsetBy: 67)...xmlStr.index(xmlStr.startIndex, offsetBy: 97), with: originSize)
+            
+            print(xmlStr)
+            
+            print(str)
+            // bounds
+//            xmlStr.replaceSubrange(xmlStr.index(xmlStr.startIndex, offsetBy: 29)...xmlStr.index(xmlStr.startIndex, offsetBy: 38), with: imageSize)
+            
+            try xmlStr.write(to: xmlUrl!, atomically: true, encoding: String.Encoding.utf8)
+            
+            
             
         } catch let error{ print(error) }
         

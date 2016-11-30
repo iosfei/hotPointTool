@@ -45,7 +45,7 @@ class hotPointTool: NSObject {
         self.imagePath = []
         
         // ideamakePath
-        self.filePath = "/Users/keney/Desktop/test"
+        self.filePath = "/Users/keney/Desktop/20161129珊瑚宫殿/新加打点"
        
         // keneyPath
         //self.filePath = "/Users/liangkang/Documents/未命名文件夹/hotPointTool/hot"
@@ -299,17 +299,6 @@ class hotPointTool: NSObject {
             
             let xmlData = try Data.init(contentsOf: xmlUrl)
             
-            //let xmlDoc = try AEXMLDocument.init(xml: xmlData)
-            
-            var options = AEXMLOptions()
-            options.documentHeader.version = 2.0
-            options.documentHeader.encoding = "utf-8"
-            options.documentHeader.standalone = "yes"
-            
-            let xmlDoc = try AEXMLDocument(xml: xmlData, options: options)
-            
-            //print("解析xml： \(xmlDoc.root["hotspot"]["frames"].all)")
-            print("解析xml： \(xmlDoc.xml)")
             
  
         

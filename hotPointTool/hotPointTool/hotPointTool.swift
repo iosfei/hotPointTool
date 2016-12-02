@@ -307,32 +307,27 @@ class hotPointTool: NSObject {
             
             let str = try String.init(contentsOfFile: xmlStr, encoding: String.Encoding.isoLatin2)
             
-            let originSize = str.substring(with: str.index(str.startIndex, offsetBy: 9)..<str.index(str.startIndex, offsetBy: 38))
+            let originSize = str.substring(with: str.index(str.startIndex, offsetBy: 22)..<str.index(str.startIndex, offsetBy: 36))
             
-            let frame = str.substring(with: str.index(str.startIndex, offsetBy: 39)..<str.endIndex)
+            let bounds = "\(self.imageWidth!), \(self.imageheight!)"
             
-            let imageSize = "\(self.imageWidth!), \(self.imageheight!)"
             
+            // 重新写入 xml
             let xmlUrl = Bundle.main.url(forResource: "hotspotdatafile", withExtension: "xml")
             
             var xmlStr = try String.init(contentsOf: xmlUrl!)
             
+            // bounds
+            xmlStr.replaceSubrange(xmlStr.index(xmlStr.startIndex, offsetBy: 29)...xmlStr.index(xmlStr.startIndex, offsetBy: 38), with: bounds)
             
-            // frame
-            xmlStr.replaceSubrange(xmlStr.index(xmlStr.startIndex, offsetBy: 67)...xmlStr.index(xmlStr.startIndex, offsetBy: 97), with: originSize)
+            // originSize
+            xmlStr.replaceSubrange(xmlStr.index(xmlStr.startIndex, offsetBy: 81)...xmlStr.index(xmlStr.startIndex, offsetBy: 94), with: originSize)
             
             print(xmlStr)
             
-            print(str)
-            // bounds
-//            xmlStr.replaceSubrange(xmlStr.index(xmlStr.startIndex, offsetBy: 29)...xmlStr.index(xmlStr.startIndex, offsetBy: 38), with: imageSize)
-            
             try xmlStr.write(to: xmlUrl!, atomically: true, encoding: String.Encoding.utf8)
             
-            
-            
         } catch let error{ print(error) }
-        
         
     }
     

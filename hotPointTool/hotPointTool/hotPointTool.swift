@@ -313,25 +313,25 @@ class hotPointTool: NSObject {
             // 重新修改 xml
             let xmlUrl = Bundle.main.url(forResource: "hotspotdatafile", withExtension: "xml")
             
-            var xmlStr = try String.init(contentsOf: xmlUrl!)
+            var xmlNewStr = try String.init(contentsOf: xmlUrl!)
             
             // bounds
-            xmlStr.replaceSubrange(xmlStr.index(xmlStr.startIndex, offsetBy: 29)...xmlStr.index(xmlStr.startIndex, offsetBy: 38), with: bounds)
+            xmlNewStr.replaceSubrange(xmlNewStr.index(xmlNewStr.startIndex, offsetBy: 29)...xmlNewStr.index(xmlNewStr.startIndex, offsetBy: 38), with: bounds)
             
             // originSize
-            xmlStr.replaceSubrange(xmlStr.index(xmlStr.startIndex, offsetBy: 81)...xmlStr.index(xmlStr.startIndex, offsetBy: 94), with: originSize)
+            xmlNewStr.replaceSubrange(xmlNewStr.index(xmlNewStr.startIndex, offsetBy: 81)...xmlNewStr.index(xmlNewStr.startIndex, offsetBy: 94), with: originSize)
             
             let fh = try FileHandle.init(forWritingTo: xmlUrl!)
             
             let data = xmlStr.data(using: String.Encoding.utf8)
             
-            fh.write(data!)
+            fh.seekToEndOfFile()
+            fh.synchronizeFile()
             
-            print(fh.readDataToEndOfFile())
+            fh.write(data!)
             
             fh.closeFile()
             
-            print(xmlStr)
             
         } catch let error{ print(error) }
         

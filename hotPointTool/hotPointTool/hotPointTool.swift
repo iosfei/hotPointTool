@@ -45,10 +45,10 @@ class hotPointTool: NSObject {
         self.imagePath = []
 
         // ideamakePath
-        self.filePath = "/Users/keney/Documents/备份/demo/hotPointTool/hot"
+        //self.filePath = "/Users/keney/Documents/备份/demo/hotPointTool/hot"
        
         // keneyPath
-        //self.filePath = "/Users/liangkang/Documents/未命名文件夹/hotPointTool/hot"
+        self.filePath = "/Users/liangkang/Documents/未命名文件夹/hotPointTool/hot"
         
         self.newfilePath = self.filePath + "/\(hotspots)"
         
@@ -293,6 +293,12 @@ class hotPointTool: NSObject {
             
             self.imageheight = Double(image.image!.size.height * 0.5)
             
+        }else{
+            
+            let image = NSImage.init(data:data!)
+            self.imageWidth = Double(image!.size.width * 0.5)
+            self.imageheight = Double(image!.size.height * 0.5)
+        
         }
     }
     
@@ -321,16 +327,25 @@ class hotPointTool: NSObject {
             // originSize
             xmlNewStr.replaceSubrange(xmlNewStr.index(xmlNewStr.startIndex, offsetBy: 81)...xmlNewStr.index(xmlNewStr.startIndex, offsetBy: 94), with: originSize)
             
-            let fh = try FileHandle.init(forWritingTo: xmlUrl!)
             
-            let data = xmlStr.data(using: String.Encoding.utf8)
             
-            fh.seekToEndOfFile()
-            fh.synchronizeFile()
+            //let fm = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
             
-            fh.write(data!)
+            //let path = try fm?.appendingPathComponent(String.init(contentsOf: xmlUrl!, encoding: String.Encoding.utf8))
             
-            fh.closeFile()
+            //try xmlNewStr.write(toFile: String.init(contentsOf: path!, encoding: String.Encoding.utf8), atomically: false, encoding: String.Encoding.utf8)
+            
+            
+            /*
+             //FileHandle 写入模式
+             let fh = try FileHandle.init(forWritingTo: xmlUrl!)
+             
+             let data = xmlNewStr.data(using: String.Encoding.isoLatin2)
+             
+             fh.write(data!)
+             
+             fh.closeFile()
+             */
             
             
         } catch let error{ print(error) }

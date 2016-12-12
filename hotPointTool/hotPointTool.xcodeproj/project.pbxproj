@@ -14,6 +14,7 @@
 		3D1337DE1DC05F4D00A256A6 /* hotPointToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1337DD1DC05F4D00A256A6 /* hotPointToolTests.swift */; };
 		3D1337E91DC05F4D00A256A6 /* hotPointToolUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1337E81DC05F4D00A256A6 /* hotPointToolUITests.swift */; };
 		3D1AEF761DC1ECC5009FDF90 /* hotPointTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1AEF751DC1ECC5009FDF90 /* hotPointTool.swift */; };
+		3DCD20861DFE8628000F24BA /* locationCoordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCD20851DFE8628000F24BA /* locationCoordinate.swift */; };
 		3DEACB621DEEA78300750DC3 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEACB5C1DEEA78300750DC3 /* Document.swift */; };
 		3DEACB631DEEA78300750DC3 /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEACB5D1DEEA78300750DC3 /* Element.swift */; };
 		3DEACB641DEEA78300750DC3 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEACB5E1DEEA78300750DC3 /* Error.swift */; };
@@ -54,6 +55,7 @@
 		3D1337E81DC05F4D00A256A6 /* hotPointToolUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hotPointToolUITests.swift; sourceTree = "<group>"; };
 		3D1337EA1DC05F4D00A256A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D1AEF751DC1ECC5009FDF90 /* hotPointTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hotPointTool.swift; sourceTree = "<group>"; };
+		3DCD20851DFE8628000F24BA /* locationCoordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = locationCoordinate.swift; sourceTree = "<group>"; };
 		3DEACB5B1DEEA78300750DC3 /* AEXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEXML.h; sourceTree = "<group>"; };
 		3DEACB5C1DEEA78300750DC3 /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		3DEACB5D1DEEA78300750DC3 /* Element.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				3D1337CB1DC05F4D00A256A6 /* AppDelegate.swift */,
 				3D1337CD1DC05F4D00A256A6 /* ViewController.swift */,
 				3D1AEF751DC1ECC5009FDF90 /* hotPointTool.swift */,
+				3DCD20851DFE8628000F24BA /* locationCoordinate.swift */,
 				3D1337CF1DC05F4D00A256A6 /* Assets.xcassets */,
 				3D1337D11DC05F4D00A256A6 /* Main.storyboard */,
 				3D1337D41DC05F4D00A256A6 /* Info.plist */,
@@ -303,6 +306,7 @@
 				3DEACB621DEEA78300750DC3 /* Document.swift in Sources */,
 				3D1337CE1DC05F4D00A256A6 /* ViewController.swift in Sources */,
 				3D1337CC1DC05F4D00A256A6 /* AppDelegate.swift in Sources */,
+				3DCD20861DFE8628000F24BA /* locationCoordinate.swift in Sources */,
 				3D1AEF761DC1ECC5009FDF90 /* hotPointTool.swift in Sources */,
 				3DEACB671DEEA78300750DC3 /* Parser.swift in Sources */,
 				3DEACB641DEEA78300750DC3 /* Error.swift in Sources */,

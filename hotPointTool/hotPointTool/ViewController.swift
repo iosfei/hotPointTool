@@ -14,15 +14,17 @@ class ViewController: NSViewController {
         super.viewDidLoad()
 
         
+        /*
          let vc = hotPointTool.init()
-        
-             vc.creatFile()
-        
-             vc.copyFileToObject()
-        
-             vc.getPngMessges()
-        
-             vc.getXMLOriginSize()
+         
+         vc.creatFile()
+         
+         vc.copyFileToObject()
+         
+         vc.getPngMessges()
+         
+         vc.getXMLOriginSize()         
+         */
         
     }
     

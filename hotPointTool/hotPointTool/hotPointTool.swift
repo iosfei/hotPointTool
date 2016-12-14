@@ -48,7 +48,7 @@ class hotPointTool: NSObject {
         //self.filePath = "/Users/keney/Documents/备份/demo/hotPointTool/hot"
        
         // keneyPath
-        self.filePath = "/Users/liangkang/Documents/未命名文件夹/hotPointTool/hot"
+        self.filePath = "/Users/keney/Documents/备份/demo/hotPointTool/hot"
         
         self.newfilePath = self.filePath + "/\(hotspots)"
         
@@ -329,11 +329,11 @@ class hotPointTool: NSObject {
             
             
             
-            //let fm = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+            var fm = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
             
-            //let path = try fm?.appendingPathComponent(String.init(contentsOf: xmlUrl!, encoding: String.Encoding.utf8))
+            let path = try fm?.appendingPathComponent(String.init(contentsOf: xmlUrl!, encoding: String.Encoding.utf8))
             
-            //try xmlNewStr.write(toFile: String.init(contentsOf: path!, encoding: String.Encoding.utf8), atomically: false, encoding: String.Encoding.utf8)
+            try xmlNewStr.write(toFile: String.init(contentsOf: path!, encoding: String.Encoding.utf8), atomically: false, encoding: String.Encoding.utf8)
             
             
             /*

@@ -8,7 +8,7 @@
 
 import Cocoa
 
-/*
+
  class hotPointTool: NSObject {
  
  var filePath: String
@@ -356,4 +356,3 @@ import Cocoa
  
  }
 
- */

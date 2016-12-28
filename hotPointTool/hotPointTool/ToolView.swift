@@ -86,10 +86,9 @@ class ToolView: NSView {
             let path = pasteboard[0] as? String
             else { return false }
         
-        //GET YOUR FILE PATH !!
         self.ToolfilePath = path
         
-        Swift.print("\n performDragOperation")
+        Swift.print("performDragOperation: \(self.ToolfilePath)")
         
         return true
     }

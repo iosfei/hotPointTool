@@ -14,7 +14,7 @@ class ViewController: NSViewController {
         super.viewDidLoad()
 
         
-        
+        /*
          let vc = hotPointTool.init()
          
          vc.creatFile()
@@ -24,7 +24,8 @@ class ViewController: NSViewController {
          vc.getPngMessges()
          
          vc.getXMLOriginSize()         
-         
+         */
+        
         
     }
     

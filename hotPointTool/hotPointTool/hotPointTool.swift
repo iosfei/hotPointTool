@@ -317,13 +317,17 @@ import Cocoa
  let xmlUrl = Bundle.main.url(forResource: "hotspotdatafile", withExtension: "xml")
  
  var xmlNewStr = try String.init(contentsOf: xmlUrl!)
+    
+    print("这是旧拼接的参数\(xmlNewStr)")
+    
  
  // get bounds
  xmlNewStr.replaceSubrange(xmlNewStr.index(xmlNewStr.startIndex, offsetBy: 29)...xmlNewStr.index(xmlNewStr.startIndex, offsetBy: 38), with: bounds)
  
  // get originSize
  xmlNewStr.replaceSubrange(xmlNewStr.index(xmlNewStr.startIndex, offsetBy: 81)...xmlNewStr.index(xmlNewStr.startIndex, offsetBy: 94), with: originSize)
- 
+  
+    print("这是新拼接的参数\(xmlNewStr)")
  
  
  let fm = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
@@ -332,6 +336,7 @@ import Cocoa
  
  try xmlNewStr.write(toFile: String.init(contentsOf: path!, encoding: String.Encoding.utf8), atomically: false, encoding: String.Encoding.utf8)
  
+   
  
  /*
     
@@ -343,10 +348,17 @@ import Cocoa
  fh.write(data!)
  
  fh.closeFile()
+     
  */
  
  
- } catch let error{ print(error) }
+ } catch let error{
+    
+    print("getXMLOriginSize writing error!!!!!!!!!")
+    
+    //print(error)
+    
+    }
  
  }
  

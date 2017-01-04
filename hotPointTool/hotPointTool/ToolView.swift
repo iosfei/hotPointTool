@@ -80,10 +80,13 @@ class ToolView: NSView, NSTextFieldDelegate, NSTextDelegate {
         
         self.ToolfilePath = URL(fileURLWithPath: path).path
         
-        self.filePathLabel.selectText(self.ToolfilePath!)
+        //self.filePathLabel.selectText(self.ToolfilePath!)
+        
+        self.filePathLabel.stringValue = self.ToolfilePath!
         
         return false
     }
+    
     
     
     override func draggingExited(_ sender: NSDraggingInfo?) {
@@ -93,7 +96,6 @@ class ToolView: NSView, NSTextFieldDelegate, NSTextDelegate {
     override func draggingEnded(_ sender: NSDraggingInfo?) {
         //self.layer?.backgroundColor = NSColor.gray.cgColor
         
-        self.filePathLabel.setValue(self.ToolfilePath!, forKey: "filePath")
         
     }
     

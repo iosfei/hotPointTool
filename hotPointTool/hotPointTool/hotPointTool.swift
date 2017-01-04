@@ -46,16 +46,13 @@ import Cocoa
  self.imagePath = []
  
  // ideamakePath
- self.filePath = "/Users/keney/Documents/备份/demo/hotPointTool/hot"
- 
- // keneyPath
- //self.filePath = "/Users/keney/Documents/备份/demo/hotPointTool/hot"
+ self.filePath = ""
  
  self.newfilePath = self.filePath + "/\(hotspots)"
  
  }
  
- // 带后缀的 xml 文件名
+ // hasSuffix's file
  func foundItemInDirector() -> [String] {
  
  
@@ -80,7 +77,7 @@ import Cocoa
  
  }
  
- // 不带后缀的 xml 文件名
+ // no Suffix's files
  func getFileNameAryInDirector(fileType: String) -> [String] {
  
  var ary : [String] = []
@@ -127,12 +124,12 @@ import Cocoa
  }
  
  
- // 根据文件名拼接的目标路径
+ // Stitching path
  func getObjectUrlPath(fileType: String) -> [String] {
  
  var upAry : [String] = []
  
- // 查找xml文件
+ // search xml files
  let fileNameAry = self.getFileNameAryInDirector(fileType: "xml")
  
  if fileType == "xml"{
@@ -166,7 +163,7 @@ import Cocoa
  
  }
  
- // 获取待处理 xml, png 文件夹的路径
+ // get filePath
  func getItemUrlPath(fileType: String) -> [String] {
  
  var itemUrl : [String] = []
@@ -217,7 +214,7 @@ import Cocoa
  
  }
  
- // 创建热点对应的文件夹
+
  func creatFile(){
  
  self.fileAry = self.getFileNameAryInDirector(fileType:"xml")
@@ -238,17 +235,16 @@ import Cocoa
  
  }
  
- // copy文件到对应目录
+
  func copyFileToObject(){
  
- // 获取xml待拷贝的文件路径集合
+
  let itemUrl = self.getItemUrlPath(fileType: "xml")
  
- // 通xml过获取目标文件夹路径集合copy到目标方法
  let objUrl = self.getObjectUrlPath(fileType: "xml")
  
  
- // png 文件
+ // get png files
  let pngUrl = self.getItemUrlPath(fileType: "png")
  
  let pngObUlr = self.getObjectUrlPath(fileType: "png")
@@ -273,7 +269,7 @@ import Cocoa
  
  }
  
- // 获取 png 信息
+ // get png's messges
  func getPngMessges(){
  
  let pngAry = self.getObjectUrlPath(fileType: "png")
@@ -317,15 +313,15 @@ import Cocoa
  
  let bounds = "\(self.imageWidth!), \(self.imageheight!)"
  
- // 重新修改 xml
+ //  change xml
  let xmlUrl = Bundle.main.url(forResource: "hotspotdatafile", withExtension: "xml")
  
  var xmlNewStr = try String.init(contentsOf: xmlUrl!)
  
- // bounds
+ // get bounds
  xmlNewStr.replaceSubrange(xmlNewStr.index(xmlNewStr.startIndex, offsetBy: 29)...xmlNewStr.index(xmlNewStr.startIndex, offsetBy: 38), with: bounds)
  
- // originSize
+ // get originSize
  xmlNewStr.replaceSubrange(xmlNewStr.index(xmlNewStr.startIndex, offsetBy: 81)...xmlNewStr.index(xmlNewStr.startIndex, offsetBy: 94), with: originSize)
  
  
@@ -338,7 +334,8 @@ import Cocoa
  
  
  /*
- //FileHandle 写入模式
+    
+ //FileHandle mode  will next work 
  let fh = try FileHandle.init(forWritingTo: xmlUrl!)
  
  let data = xmlNewStr.data(using: String.Encoding.isoLatin2)

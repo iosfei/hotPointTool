@@ -40,10 +40,7 @@ class ToolView: NSView, NSTextFieldDelegate, NSTextDelegate {
         self.wantsLayer = true
         self.layer?.backgroundColor = NSColor.gray.cgColor
 
-        
         register(forDraggedTypes: [NSFilenamesPboardType, NSURLPboardType])
-        
-        //self.filePathLabel.delegate = self
         
     }
     
@@ -79,8 +76,6 @@ class ToolView: NSView, NSTextFieldDelegate, NSTextDelegate {
          */
         
         self.ToolfilePath = URL(fileURLWithPath: path).path
-        
-        //self.filePathLabel.selectText(self.ToolfilePath!)
         
         self.filePathLabel.stringValue = self.ToolfilePath!
         

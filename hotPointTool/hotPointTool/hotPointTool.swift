@@ -36,6 +36,7 @@ class hotPointTool: NSObject {
         return FileManager.default
     }()
     
+
     
     override init() {
         
@@ -328,12 +329,25 @@ class hotPointTool: NSObject {
             
             print("这是新拼接的参数\(xmlNewStr)")
             
-            let fm = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+            //let fm = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
             
-            let path = try fm?.appendingPathComponent(String.init(contentsOf: xmlUrl!, encoding: String.Encoding.utf8)).path
+            //let path = try fm?.appendingPathComponent(String.init(contentsOf: xmlUrl!, encoding: String.Encoding.utf8)).path
             
-            try xmlNewStr.write(toFile: path!, atomically: false, encoding: String.Encoding.utf8)
+            let fh = FileHandle.init(forWritingAtPath: xmlUrl!.path)
             
+            let data = xmlNewStr.data(using: String.Encoding.utf8, allowLossyConversion: true)
+            
+            fh!.seekToEndOfFile()
+            
+            fh!.write(data!)
+            
+            fh!.closeFile()
+            
+            print(self.fm.isWritableFile(atPath: xmlUrl!.path))
+
+            
+            
+//             try xmlNewStr.write(toFile: path!, atomically: false, encoding: String.Encoding.utf8)
 
             /*
              

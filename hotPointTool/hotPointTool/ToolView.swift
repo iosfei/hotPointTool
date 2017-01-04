@@ -18,19 +18,25 @@ class ToolView: NSView, NSTextFieldDelegate, NSTextDelegate {
     
     @IBAction func createHotFile(_ sender: Any) {
         
-        let vc = hotPointTool.init()
+        guard self.ToolfilePath?.isEmpty == nil else {
+            
+            let vc = hotPointTool.init()
+            
+            vc.filePath = self.ToolfilePath!
+            
+            vc.newfilePath = vc.filePath + "/\(vc.hotspots)"
+            
+            vc.creatFile()
+            
+            vc.copyFileToObject()
+            
+            vc.getPngMessges()
+            
+            vc.getXMLOriginSize()
+            
+            return
+        }
         
-        vc.filePath = self.ToolfilePath!
-        
-        vc.newfilePath = vc.filePath + "/\(vc.hotspots)"
-        
-        vc.creatFile()
-        
-        vc.copyFileToObject()
-        
-        vc.getPngMessges()
-        
-        vc.getXMLOriginSize()
     }
     
     

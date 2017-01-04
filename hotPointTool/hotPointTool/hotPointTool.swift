@@ -320,7 +320,6 @@ class hotPointTool: NSObject {
             
             print("这是旧拼接的参数\(xmlNewStr)")
             
-            
             // get bounds
             xmlNewStr.replaceSubrange(xmlNewStr.index(xmlNewStr.startIndex, offsetBy: 29)...xmlNewStr.index(xmlNewStr.startIndex, offsetBy: 38), with: bounds)
             
@@ -329,15 +328,13 @@ class hotPointTool: NSObject {
             
             print("这是新拼接的参数\(xmlNewStr)")
             
-            
             let fm = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
             
-            let path = try fm?.appendingPathComponent(String.init(contentsOf: xmlUrl!, encoding: String.Encoding.utf8))
+            let path = try fm?.appendingPathComponent(String.init(contentsOf: xmlUrl!, encoding: String.Encoding.utf8)).path
             
-            try xmlNewStr.write(toFile: String.init(contentsOf: path!, encoding: String.Encoding.utf8), atomically: false, encoding: String.Encoding.utf8)
+            try xmlNewStr.write(toFile: path!, atomically: false, encoding: String.Encoding.utf8)
             
-            
-            
+
             /*
              
              //FileHandle mode  will next work 

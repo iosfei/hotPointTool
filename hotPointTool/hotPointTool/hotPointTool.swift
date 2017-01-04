@@ -330,7 +330,7 @@ import Cocoa
  
  
  
- var fm = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+ let fm = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
  
  let path = try fm?.appendingPathComponent(String.init(contentsOf: xmlUrl!, encoding: String.Encoding.utf8))
  

@@ -8,11 +8,30 @@
 
 import Cocoa
 
-class ToolView: NSView {
-
+class ToolView: NSView, NSTextFieldDelegate, NSTextDelegate {
     
     var ToolfilePath: String?
     let expectedExt = ["kext"]  //file extensions allowed for Drag&Drop
+    
+    
+    @IBOutlet weak var filePathLabel: NSTextField!
+    
+    @IBAction func createHotFile(_ sender: Any) {
+        
+        let vc = hotPointTool.init()
+        
+        vc.filePath = self.ToolfilePath!
+        
+        vc.newfilePath = vc.filePath + "/\(vc.hotspots)"
+        
+        vc.creatFile()
+        
+        vc.copyFileToObject()
+        
+        vc.getPngMessges()
+        
+        vc.getXMLOriginSize()
+    }
     
     
     required init?(coder: NSCoder) {
@@ -20,8 +39,12 @@ class ToolView: NSView {
         
         self.wantsLayer = true
         self.layer?.backgroundColor = NSColor.gray.cgColor
+
         
         register(forDraggedTypes: [NSFilenamesPboardType, NSURLPboardType])
+        
+        //self.filePathLabel.delegate = self
+        
     }
     
     
@@ -55,30 +78,23 @@ class ToolView: NSView {
          }
          */
         
-        let vc = hotPointTool.init()
+        self.ToolfilePath = URL(fileURLWithPath: path).path
         
-        vc.filePath = URL(fileURLWithPath: path).path
-        
-        vc.newfilePath = vc.filePath + "/\(vc.hotspots)"
-        
-        vc.creatFile()
-        
-        vc.copyFileToObject()
-        
-        vc.getPngMessges()
-        
-        vc.getXMLOriginSize()
-        
+        self.filePathLabel.selectText(self.ToolfilePath!)
         
         return false
     }
     
+    
     override func draggingExited(_ sender: NSDraggingInfo?) {
-        self.layer?.backgroundColor = NSColor.gray.cgColor
+        //self.layer?.backgroundColor = NSColor.gray.cgColor
     }
     
     override func draggingEnded(_ sender: NSDraggingInfo?) {
-        self.layer?.backgroundColor = NSColor.gray.cgColor
+        //self.layer?.backgroundColor = NSColor.gray.cgColor
+        
+        self.filePathLabel.setValue(self.ToolfilePath!, forKey: "filePath")
+        
     }
     
     override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
@@ -87,8 +103,6 @@ class ToolView: NSView {
             else { return false }
         
         self.ToolfilePath = path
-        
-        Swift.print("performDragOperation: \(self.ToolfilePath)")
         
         return true
     }

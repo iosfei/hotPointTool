@@ -80,6 +80,9 @@ class ToolView: NSView, NSTextFieldDelegate, NSTextDelegate {
         
         self.filePathLabel.stringValue = self.ToolfilePath!
         
+        self.filePathLabel.lineBreakMode = NSLineBreakMode.byTruncatingMiddle
+
+        
         return false
     }
     

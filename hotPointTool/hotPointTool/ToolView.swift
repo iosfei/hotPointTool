@@ -61,7 +61,9 @@ class ToolView: NSView, NSTextFieldDelegate, NSTextDelegate {
     }
     
     fileprivate func checkExtension(_ drag: NSDraggingInfo) -> Bool {
-        guard let board = drag.draggingPasteboard().propertyList(forType: "NSFilenamesPboardType") as? NSArray,
+        
+        guard let board = drag.draggingPasteboard().propertyList(forType:
+            "NSFilenamesPboardType") as? NSArray,
             let path = board[0] as? String
             else { return false }
         
@@ -80,8 +82,6 @@ class ToolView: NSView, NSTextFieldDelegate, NSTextDelegate {
         
         return false
     }
-    
-    
     
     override func draggingExited(_ sender: NSDraggingInfo?) {
         //self.layer?.backgroundColor = NSColor.gray.cgColor
@@ -102,6 +102,7 @@ class ToolView: NSView, NSTextFieldDelegate, NSTextDelegate {
         
         return true
     }
+
 }
 
 

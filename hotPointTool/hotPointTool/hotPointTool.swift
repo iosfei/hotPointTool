@@ -325,7 +325,7 @@ class hotPointTool: NSObject {
             xmlNewStr.replaceSubrange(xmlNewStr.index(xmlNewStr.startIndex, offsetBy: 29)...xmlNewStr.index(xmlNewStr.startIndex, offsetBy: 38), with: bounds)
             
             // get originSize
-            xmlNewStr.replaceSubrange(xmlNewStr.index(xmlNewStr.startIndex, offsetBy: 81)...xmlNewStr.index(xmlNewStr.startIndex, offsetBy: 94), with: originSize)
+                xmlNewStr.replaceSubrange(xmlNewStr.index(xmlNewStr.startIndex, offsetBy: 81)...xmlNewStr.index(xmlNewStr.startIndex, offsetBy: 94), with: originSize)
             
             print("这是新拼接的参数\(xmlNewStr)")
             
@@ -343,31 +343,14 @@ class hotPointTool: NSObject {
             
             fh!.closeFile()
             
-            print(self.fm.isWritableFile(atPath: xmlUrl!.path))
-
-            
-            
-//             try xmlNewStr.write(toFile: path!, atomically: false, encoding: String.Encoding.utf8)
-
-            /*
-             
-             //FileHandle mode  will next work 
-             let fh = try FileHandle.init(forWritingTo: xmlUrl!)
-             
-             let data = xmlNewStr.data(using: String.Encoding.isoLatin2)
-             
-             fh.write(data!)
-             
-             fh.closeFile()
-             
-             */
+            //print(self.fm.isWritableFile(atPath: xmlUrl!.path))
             
             
         } catch let error{
             
             print("getXMLOriginSize writing error!!!!!!!!!")
             
-            //print(error)
+            print(error)
             
         }
         

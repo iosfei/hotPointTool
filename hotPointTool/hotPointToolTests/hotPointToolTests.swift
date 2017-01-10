@@ -24,6 +24,34 @@ class hotPointToolTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        do{
+
+            var newStrPath =  "/Users/keney/Desktop/地块005.xml"
+            var str = try String.init(contentsOfFile: newStrPath, encoding: String.Encoding.isoLatin2)
+            
+            str.removeSubrange(str.index(str.startIndex, offsetBy: 0)...str.index(str.startIndex, offsetBy: 39))
+            let strFrame = str.data(using: String.Encoding.isoLatin2)!
+            
+  
+            let modelPath =  "/Users/keney/Desktop/hotspotdatafile.xml"
+            let modelStr = try  String.init(contentsOfFile: modelPath).data(using: String.Encoding.isoLatin2)!
+            
+            let newData = modelStr + strFrame
+
+            let fm = FileHandle.init(forWritingAtPath: newStrPath)
+            fm?.seek(toFileOffset: 0)
+            fm?.write(newData)
+            fm?.closeFile()
+            
+            
+        } catch let error {
+            
+            print(error)
+        }
+        
+        
+        
     }
     
     func testPerformanceExample() {

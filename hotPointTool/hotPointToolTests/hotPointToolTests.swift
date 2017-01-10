@@ -42,22 +42,23 @@ class hotPointToolTests: XCTestCase {
             let modelStr = try  String.init(contentsOfFile: modelPath).data(using: String.Encoding.isoLatin2)!
             
             
-            print(try  String.init(contentsOfFile: modelPath))
+            //print(try  String.init(contentsOfFile: modelPath))
             // 拼接 模版头部 和 frame 的数据
-            let newData = modelStr + strFrame
+            //let newData = modelStr + strFrame
             
             
             
             let newStr =   "<hotspot bounds=\"{{0., 0.}, {50.0, 50.0}}\"" + " anchorPoint=\"{.5, .928}\"" +  " originSize=\"{2048.0, 1536.0}\"" +  " center=\"{0., 0.}\">" + "\n" +
             
                             "<backgroundImage state=\"0\" value=\"images/icon.png\" />"
-            
-            print("-\(newStr)")
+        
 
+            let strData = newStr.data(using: String.Encoding.isoLatin2)
+            
             // 写入 覆盖
             let fm = FileHandle.init(forWritingAtPath: newStrPath)
-            fm?.seek(toFileOffset: 0)
-            fm?.write(newData)
+            fm?.seekToEndOfFile()
+            fm?.write(strData!)
             fm?.closeFile()
             
             

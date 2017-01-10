@@ -306,50 +306,49 @@ class hotPointTool: NSObject {
         
         let xmlStr = firtXml[0]
         
+
+        
         do {
+            
             
             let str = try String.init(contentsOfFile: xmlStr, encoding: String.Encoding.isoLatin2)
             
             let originSize = str.substring(with: str.index(str.startIndex, offsetBy: 22)..<str.index(str.startIndex, offsetBy: 36))
             
-            let bounds = "\(self.imageWidth!), \(self.imageheight!)"
+            // 模版 头部 xml
+            let xmlUrl = Bundle.main.url(forResource: "hotspotdatafile", withExtension: "xml")?.path
             
-            //  change xml
-            let xmlUrl = Bundle.main.url(forResource: "hotspotdatafile", withExtension: "xml")
+            let newStr  =  "<hotspot bounds=\"{{0., 0.}, {\(self.imageWidth!), \(self.imageheight!)}}\"" + " anchorPoint=\"{.5, .928}\"" +  " originSize=\"{\(originSize)}\"" +  " center=\"{0., 0.}\">" + "\n" + "<backgroundImage state=\"0\" value=\"images/icon.png\" />"
             
-            var xmlNewStr = try String.init(contentsOf: xmlUrl!)
+            let newStrData = newStr.data(using: String.Encoding.isoLatin2)
             
-            print("这是旧拼接的参数\(xmlNewStr)")
+            for item in firtXml{
+                
+                 var str = try String.init(contentsOfFile: item, encoding: String.Encoding.isoLatin2)
+                
+                // 移除头部信息
+                str.removeSubrange(str.index(str.startIndex, offsetBy: 0)...str.index(str.startIndex, offsetBy: 39))
+                
+                // 保存 frame 的数据
+                let strFrame = str.data(using: String.Encoding.isoLatin2)!
+                
+                let newData = newStr.data(using: String.Encoding.utf8)! + strFrame
+                
+                // 写入 覆盖
+                let fm = FileHandle.init(forWritingAtPath: item as String!)
+                fm?.seek(toFileOffset: 0)
+                fm?.write(newData as Data!)
+                fm?.closeFile()
+                
+            }
             
-            // get bounds
-            xmlNewStr.replaceSubrange(xmlNewStr.index(xmlNewStr.startIndex, offsetBy: 29)...xmlNewStr.index(xmlNewStr.startIndex, offsetBy: 38), with: bounds)
+           
             
-            // get originSize
-                xmlNewStr.replaceSubrange(xmlNewStr.index(xmlNewStr.startIndex, offsetBy: 81)...xmlNewStr.index(xmlNewStr.startIndex, offsetBy: 94), with: originSize)
-            
-            print("这是新拼接的参数\(xmlNewStr)")
-            
-            //let fm = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-            
-            //let path = try fm?.appendingPathComponent(String.init(contentsOf: xmlUrl!, encoding: String.Encoding.utf8)).path
-            
-            let fh = FileHandle.init(forWritingAtPath: xmlUrl!.path)
-            
-            let data = xmlNewStr.data(using: String.Encoding.utf8, allowLossyConversion: true)
-            
-            fh!.seekToEndOfFile()
-            
-            fh!.write(data!)
-            
-            fh!.closeFile()
-            
-            //print(self.fm.isWritableFile(atPath: xmlUrl!.path))
             
             
         } catch let error{
             
-            print("getXMLOriginSize writing error!!!!!!!!!")
-            
+
             print(error)
             
         }
@@ -358,4 +357,5 @@ class hotPointTool: NSObject {
     
     
 }
+
 

@@ -306,8 +306,6 @@ class hotPointTool: NSObject {
         
         let xmlStr = firtXml[0]
         
-
-        
         do {
             
             
@@ -316,11 +314,7 @@ class hotPointTool: NSObject {
             let originSize = str.substring(with: str.index(str.startIndex, offsetBy: 22)..<str.index(str.startIndex, offsetBy: 36))
             
             // 模版 头部 xml
-            let xmlUrl = Bundle.main.url(forResource: "hotspotdatafile", withExtension: "xml")?.path
-            
             let newStr  =  "<hotspot bounds=\"{{0., 0.}, {\(self.imageWidth!), \(self.imageheight!)}}\"" + " anchorPoint=\"{.5, .928}\"" +  " originSize=\"{\(originSize)}\"" +  " center=\"{0., 0.}\">" + "\n" + "<backgroundImage state=\"0\" value=\"images/icon.png\" />"
-            
-            let newStrData = newStr.data(using: String.Encoding.isoLatin2)
             
             for item in firtXml{
                 
@@ -341,10 +335,6 @@ class hotPointTool: NSObject {
                 fm?.closeFile()
                 
             }
-            
-           
-            
-            
             
         } catch let error{
             

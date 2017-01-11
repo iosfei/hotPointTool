@@ -36,17 +36,12 @@ class hotPointTool: NSObject {
         return FileManager.default
     }()
     
-
-    
     override init() {
-        
-        
         
         self.fileAry = []
         
         self.imagePath = []
         
-        // ideamakePath
         self.filePath = ""
         
         self.newfilePath = self.filePath + "/\(hotspots)"
@@ -314,7 +309,7 @@ class hotPointTool: NSObject {
             let originSize = str.substring(with: str.index(str.startIndex, offsetBy: 22)..<str.index(str.startIndex, offsetBy: 36))
             
             // 模版 头部 xml
-            let newStr  =  "<hotspot bounds=\"{{0., 0.}, {\(self.imageWidth!), \(self.imageheight!)}}\"" + " anchorPoint=\"{.5, .928}\"" +  " originSize=\"{\(originSize)}\"" +  " center=\"{0., 0.}\">" + "\n" + "<backgroundImage state=\"0\" value=\"images/icon.png\" />"
+            let newStr  =  "<hotspot bounds=\"{{0., 0.}, {\(self.imageWidth!), \(self.imageheight!)}}\"" + " anchorPoint=\"{.5, .928}\"" +  " originSize=\"{\(originSize)}\"" +  " center=\"{0., 0.}\">" + "\n" + "<backgroundImage state=\"0\" value=\"images/icon.png\" /> \n"
             
             for item in firtXml{
                 

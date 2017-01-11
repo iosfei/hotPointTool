@@ -211,6 +211,35 @@ class hotPointTool: NSObject {
     }
     
     
+    func checkFile(){
+        
+        let xmlFiles = self.getFileNameAryInDirector(fileType:"xml")
+        
+        let pngFiles = self.getFileNameAryInDirector(fileType:"png")
+        
+        
+            for (index, _) in pngFiles.enumerated() {
+        
+                if xmlFiles[index] != pngFiles[index]{
+                
+                    let alert = NSAlert.init()
+                    
+//                    alert.messageText.append("轻确认一下\(xmlFiles[index]).xml与png名称的统一")
+                    alert.informativeText = "轻确认一下\(xmlFiles[index]).xml与png名称的统一"
+                    alert.showsSuppressionButton = true
+                    alert.runModal()
+                    
+                    return
+                }
+        
+        }
+        
+        
+        
+        
+        
+    }
+    
     func creatFile(){
         
         self.fileAry = self.getFileNameAryInDirector(fileType:"xml")

@@ -28,6 +28,8 @@ class ToolView: NSView, NSTextFieldDelegate, NSTextDelegate {
             
             vc.creatFile()
             
+            vc.checkFile()
+            
             vc.copyFileToObject()
             
             vc.getPngMessges()

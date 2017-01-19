@@ -19,6 +19,8 @@ class hotPointTool: NSObject {
     
     var imagePath : [String]
     
+    var pngAry : [String]
+    
     let hotspots = "hotspots"
     
     let imageFile = "images"
@@ -42,6 +44,8 @@ class hotPointTool: NSObject {
         
         self.imagePath = []
         
+        self.pngAry = []
+        
         self.filePath = ""
         
         self.newfilePath = self.filePath + "/\(hotspots)"
@@ -49,7 +53,7 @@ class hotPointTool: NSObject {
     }
     
     // hasSuffix's file
-    func foundItemInDirector() -> [String] {
+    func foundItemInDirector(fileType:String) -> [String] {
         
         
         var fileAry : [String] = []
@@ -61,13 +65,25 @@ class hotPointTool: NSObject {
             for item in try self.fm.contentsOfDirectory(atPath: self.filePath) {
                 
                 
-                if item.hasSuffix("xml"){
+                if fileType == "xml"{
+                    
+                    if item.hasSuffix("xml"){
+                        
+                        fileAry.append(item)
+                    }
+                
+                }else if fileType == "png" {
+                
+                if item.hasSuffix("png"){
                     
                     fileAry.append(item)
                 }
             }
             
+            }
+            
         } catch {}
+        
         
         return fileAry
         
@@ -78,13 +94,14 @@ class hotPointTool: NSObject {
         
         var ary : [String] = []
         
-        let itemAry = self.foundItemInDirector()
         
         
         if fileType == "xml"{
             
+            let itemAry = self.foundItemInDirector(fileType:"xml")
             for item in itemAry {
                 
+                print("xml原始文件：\(item)")
                 let charset = CharacterSet(charactersIn:".xml")
                 let itemName = item.trimmingCharacters(in: charset)
                 
@@ -94,12 +111,17 @@ class hotPointTool: NSObject {
                     
                 }
             }
-            
-            
+
         }else if fileType == "png"{
+            
+            
+            let itemAry = self.foundItemInDirector(fileType:"png")
+            
             
             for item in itemAry {
                 
+                
+                print("png原始文件：\(item)")
                 let charset = CharacterSet(charactersIn:".png")
                 let itemName = item.trimmingCharacters(in: charset)
                 
@@ -126,9 +148,11 @@ class hotPointTool: NSObject {
         var upAry : [String] = []
         
         // search xml files
-        let fileNameAry = self.getFileNameAryInDirector(fileType: "xml")
+        
         
         if fileType == "xml"{
+            
+            let fileNameAry = self.getFileNameAryInDirector(fileType: "xml")
             
             for item in fileNameAry {
                 
@@ -144,6 +168,7 @@ class hotPointTool: NSObject {
             
         }else if fileType == "png"{
             
+            let fileNameAry = self.getFileNameAryInDirector(fileType: "png")
             
             for item in fileNameAry {
                 
@@ -214,20 +239,27 @@ class hotPointTool: NSObject {
     func checkFile(){
         
         let xmlFiles = self.getFileNameAryInDirector(fileType:"xml")
-        
         let pngFiles = self.getFileNameAryInDirector(fileType:"png")
         
         
-            for (index, _) in pngFiles.enumerated() {
+        print("所有xml文件\(xmlFiles) \n")
+        print("所有png文件\(pngFiles) \n")
+        
+        
+            for (index, _) in xmlFiles.enumerated() {
         
                 if xmlFiles[index] != pngFiles[index]{
                 
-                    let alert = NSAlert.init()
+                    print("xml文件\(xmlFiles[index]) \n")
+                    print("png文件\(pngFiles[index]) \n")
                     
-//                    alert.messageText.append("轻确认一下\(xmlFiles[index]).xml与png名称的统一")
-                    alert.informativeText = "轻确认一下\(xmlFiles[index]).xml与png名称的统一"
-                    alert.showsSuppressionButton = true
-                    alert.runModal()
+                    /*
+                     let alert = NSAlert.init()
+                     alert.messageText.append("轻确认一下\(xmlFiles[index]).xml与png名称的统一")
+                     alert.informativeText = "轻确认一下\(xmlFiles[index]).xml与png名称的统一"
+                     alert.showsSuppressionButton = true
+                     alert.runModal()
+                     */
                     
                     return
                 }

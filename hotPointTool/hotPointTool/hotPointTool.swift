@@ -58,25 +58,37 @@ class hotPointTool: NSObject {
         var fileAry : [String] = []
         
         do {
-
-            for item in try self.fm.contentsOfDirectory(atPath: self.filePath) {
+            
+            let contentFiles = try self.fm.contentsOfDirectory(atPath: self.filePath)
+            
+            for item in contentFiles{
                 
-                
-                if fileType == "xml"{
-                    
+                switch fileType {
+                case "xml":
                     if item.hasSuffix("xml"){
                         
                         fileAry.append(item)
                     }
-                
-                }else if fileType == "png" {
-                
-                if item.hasSuffix("png"){
                     
-                    fileAry.append(item)
+                case "png":
+                    
+                    if item.hasSuffix("png"){
+                        
+                        fileAry.append(item)
+                        
+                    }
+                    
+                case "other":
+                    if fileType == "other"{
+                        
+                        fileAry.append(item)
+                        
+                    }
+                    
+                default: break
                 }
-            }
-            
+                
+                
             }
             
         } catch {}
@@ -93,43 +105,33 @@ class hotPointTool: NSObject {
         
         
         
-        if fileType == "xml"{
-            
-            let itemAry = self.foundItemInDirector(fileType:"xml")
-            for item in itemAry {
-                
-                //print("xml原始文件：\(item)")
-                let charset = CharacterSet(charactersIn:".xml")
-                let itemName = item.trimmingCharacters(in: charset)
-                
-                if(itemName == "camera" || itemName == "DS_Store" || itemName == "\(hotspots)"){}else{
-                    
-                    ary.append(itemName)
-                    
-                }
-            }
 
-        }else if fileType == "png"{
             
-            
-            let itemAry = self.foundItemInDirector(fileType:"png")
-            
+            let itemAry = self.foundItemInDirector(fileType:"\(fileType)")
+        
             for item in itemAry {
                 
-                //print("png原始文件：\(item)")
-                let charset = CharacterSet(charactersIn:".png")
+                let charset = CharacterSet(charactersIn:".\(fileType)")
                 let itemName = item.trimmingCharacters(in: charset)
                 
-                if(itemName == "camera" || itemName == "DS_Store" || itemName == "\(hotspots)"){}else{
+                if fileType == "xml"{
+                
+                    if(itemName == "camera" || itemName == "DS_Store" || itemName == "\(hotspots)"){}else{
+                        
+                        ary.append(itemName)
+                        
+                    }
+                }else if fileType == "png"{
                     
-                    ary.append(itemName)
-                    
+                    if(itemName == "camera" || itemName == "DS_Store" || itemName == "\(hotspots)"){}else{
+                        
+                        ary.append(itemName)
+                        
+                    }
                 }
                 
             }
-            
-            
-        }
+        
         
         self.fileAry = ary
         
@@ -142,28 +144,20 @@ class hotPointTool: NSObject {
         
         var upAry : [String] = []
         
-        // search xml files
+        let fileNameAry = self.getFileNameAryInDirector(fileType: "\(fileType)")
         
-        
-        if fileType == "xml"{
+        switch fileType {
             
-            let fileNameAry = self.getFileNameAryInDirector(fileType: "xml")
-            
+        case "xml":
             for item in fileNameAry {
                 
                 let subXmlPath = self.newfilePath + "/\(item)/" + "\(xmlName)"
                 
-                if item.hasSuffix("png"){}else{
-                    
-                    upAry.append(subXmlPath)
-                    
-                }
+                upAry.append(subXmlPath)
                 
             }
             
-        }else if fileType == "png"{
-            
-            let fileNameAry = self.getFileNameAryInDirector(fileType: "png")
+        case "png":
             
             for item in fileNameAry {
                 
@@ -173,6 +167,7 @@ class hotPointTool: NSObject {
                 
             }
             
+        default: break
         }
         
         return upAry
@@ -183,8 +178,6 @@ class hotPointTool: NSObject {
     func getItemUrlPath(fileType: String) -> [String] {
         
         var itemUrl : [String] = []
-        
-        if fileType == "xml"{
             
             do {
                 
@@ -194,65 +187,72 @@ class hotPointTool: NSObject {
                 
                 for item in newUrls {
                     
+                switch fileType {
+                    
+                case "xml":
                     if item.absoluteString.hasSuffix("xml"){
                         
                         itemUrl.append(item.path)
-                        
+
                     }
-                    
-                }
-            } catch {}
-            
-            
-        }else if fileType == "png"{
-            
-            do {
-                
-                let url : URL = URL.init(fileURLWithPath: self.filePath)
-                
-                let newUrls = try self.fm.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: FileManager.DirectoryEnumerationOptions.skipsHiddenFiles)
-                
-                for item in newUrls {
+
+                case "png":
                     
                     if item.absoluteString.hasSuffix("png"){
                         
                         itemUrl.append(item.path)
                     }
+                
+                case "hotspots":
                     
+                    if !item.absoluteString.hasSuffix("png") || !item.absoluteString.hasSuffix("xml"){
+                    
+                       itemUrl.append(item.path)
+
+                    }
+                    
+                    
+                default: break
                 }
+            
+                    }
+                
             } catch {}
-            
-            
-        }
-        
         
         return itemUrl
         
     }
     
-   func checkFile()-> Bool{
-        
+    func checkFile()-> Bool{
+
         let xmlFiles = self.getFileNameAryInDirector(fileType:"xml")
         let pngFiles = self.getFileNameAryInDirector(fileType:"png")
+        let otherFiles = self.getItemUrlPath(fileType: "hotspots")
         
-            for (index, _) in xmlFiles.enumerated() {
-        
-                if xmlFiles[index] != pngFiles[index]{
+        for (index, _) in xmlFiles.enumerated() {
+            
+            if xmlFiles[index] != pngFiles[index]{
                 
-                    print("xml文件\(xmlFiles[index]) \n")
-                    print("png文件\(pngFiles[index]) \n")
+                let alert = NSAlert.init()
+                alert.messageText.append("温馨提醒：")
+                alert.informativeText = "请保持\(xmlFiles[index]).xml与对应的png名称的统一"
+                alert.showsSuppressionButton = true
+                alert.runModal()
+                
+                return false
+            }
+            
+            for item in otherFiles {
+                
+                print(item)
+                if item == "hotspots"{
                     
-                     let alert = NSAlert.init()
-                     alert.messageText.append("检查到有文件名称不一致")
-                     alert.informativeText = "请保持\(xmlFiles[index]).xml与png名称的统一"
-                     alert.showsSuppressionButton = true
-                     alert.runModal()
-                 
-                    return false
                 }
                 
+            }
+            
         }
-    
+        
         return true
     }
     
@@ -266,7 +266,7 @@ class hotPointTool: NSObject {
             let imageFilePath = xmlFilePath + "/\(imageFile)"
             
             do{
-               
+                
                 try self.fm.createDirectory(atPath: self.newfilePath, withIntermediateDirectories: true, attributes: nil)
                 
                 try self.fm.createDirectory(atPath: xmlFilePath, withIntermediateDirectories: true, attributes: nil)
@@ -285,7 +285,6 @@ class hotPointTool: NSObject {
         let itemUrl = self.getItemUrlPath(fileType: "xml")
         
         let objUrl = self.getObjectUrlPath(fileType: "xml")
-        
         
         // get png files
         let pngUrl = self.getItemUrlPath(fileType: "png")
@@ -336,7 +335,9 @@ class hotPointTool: NSObject {
         }else{
             
             let image = NSImage.init(data:data!)
+            
             self.imageWidth = Double(image!.size.width * 0.5)
+            
             self.imageheight = Double(image!.size.height * 0.5)
             
         }
@@ -360,7 +361,7 @@ class hotPointTool: NSObject {
             
             for item in firtXml{
                 
-                 var str = try String.init(contentsOfFile: item, encoding: String.Encoding.isoLatin2)
+                var str = try String.init(contentsOfFile: item, encoding: String.Encoding.isoLatin2)
                 
                 // 移除头部信息
                 str.removeSubrange(str.index(str.startIndex, offsetBy: 0)...str.index(str.startIndex, offsetBy: 39))
@@ -380,7 +381,7 @@ class hotPointTool: NSObject {
             
         } catch let error{
             
-
+            
             print(error)
             
         }

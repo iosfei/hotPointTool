@@ -26,15 +26,19 @@ class ToolView: NSView, NSTextFieldDelegate, NSTextDelegate {
             
             vc.newfilePath = vc.filePath + "/\(vc.hotspots)"
             
-            vc.creatFile()
+            guard  !vc.checkFile() else{
             
-            vc.checkFile()
+                vc.creatFile()
+                
+                vc.copyFileToObject()
+                
+                vc.getPngMessges()
+                
+                vc.getXMLOriginSize()
             
-            vc.copyFileToObject()
+                return
+            }
             
-            vc.getPngMessges()
-            
-            vc.getXMLOriginSize()
             
             return
         }

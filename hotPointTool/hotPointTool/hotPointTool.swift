@@ -55,13 +55,10 @@ class hotPointTool: NSObject {
     // hasSuffix's file
     func foundItemInDirector(fileType:String) -> [String] {
         
-        
         var fileAry : [String] = []
         
         do {
-            
-            try self.fm.createDirectory(atPath: self.newfilePath, withIntermediateDirectories: true, attributes: nil)
-            
+
             for item in try self.fm.contentsOfDirectory(atPath: self.filePath) {
                 
                 
@@ -101,7 +98,7 @@ class hotPointTool: NSObject {
             let itemAry = self.foundItemInDirector(fileType:"xml")
             for item in itemAry {
                 
-                print("xml原始文件：\(item)")
+                //print("xml原始文件：\(item)")
                 let charset = CharacterSet(charactersIn:".xml")
                 let itemName = item.trimmingCharacters(in: charset)
                 
@@ -117,11 +114,9 @@ class hotPointTool: NSObject {
             
             let itemAry = self.foundItemInDirector(fileType:"png")
             
-            
             for item in itemAry {
                 
-                
-                print("png原始文件：\(item)")
+                //print("png原始文件：\(item)")
                 let charset = CharacterSet(charactersIn:".png")
                 let itemName = item.trimmingCharacters(in: charset)
                 
@@ -235,16 +230,10 @@ class hotPointTool: NSObject {
         
     }
     
-    
-    func checkFile(){
+   func checkFile()-> Bool{
         
         let xmlFiles = self.getFileNameAryInDirector(fileType:"xml")
         let pngFiles = self.getFileNameAryInDirector(fileType:"png")
-        
-        
-        print("所有xml文件\(xmlFiles) \n")
-        print("所有png文件\(pngFiles) \n")
-        
         
             for (index, _) in xmlFiles.enumerated() {
         
@@ -253,23 +242,18 @@ class hotPointTool: NSObject {
                     print("xml文件\(xmlFiles[index]) \n")
                     print("png文件\(pngFiles[index]) \n")
                     
-                    /*
                      let alert = NSAlert.init()
-                     alert.messageText.append("轻确认一下\(xmlFiles[index]).xml与png名称的统一")
-                     alert.informativeText = "轻确认一下\(xmlFiles[index]).xml与png名称的统一"
+                     alert.messageText.append("检查到有文件名称不一致")
+                     alert.informativeText = "请保持\(xmlFiles[index]).xml与png名称的统一"
                      alert.showsSuppressionButton = true
                      alert.runModal()
-                     */
-                    
-                    return
+                 
+                    return false
                 }
-        
+                
         }
-        
-        
-        
-        
-        
+    
+        return true
     }
     
     func creatFile(){
@@ -282,6 +266,8 @@ class hotPointTool: NSObject {
             let imageFilePath = xmlFilePath + "/\(imageFile)"
             
             do{
+               
+                try self.fm.createDirectory(atPath: self.newfilePath, withIntermediateDirectories: true, attributes: nil)
                 
                 try self.fm.createDirectory(atPath: xmlFilePath, withIntermediateDirectories: true, attributes: nil)
                 

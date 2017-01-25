@@ -227,8 +227,8 @@ class hotPointTool: NSObject {
 
         let xmlFiles = self.getFileNameAryInDirector(fileType:"xml")
         let pngFiles = self.getFileNameAryInDirector(fileType:"png")
-        let otherFiles = self.getItemUrlPath(fileType: "hotspots")
-        
+    
+    
         for (index, _) in xmlFiles.enumerated() {
             
             if xmlFiles[index] != pngFiles[index]{
@@ -242,16 +242,20 @@ class hotPointTool: NSObject {
                 return false
             }
             
-            for item in otherFiles {
-                
-                print(item)
-                if item == "hotspots"{
-                    
-                }
-                
-            }
             
         }
+        
+        // 删除旧的 hotspots 文件夹
+            do {
+                
+                
+                if self.fm.fileExists(atPath: self.newfilePath){
+                
+                    try self.fm.removeItem(atPath: self.newfilePath)
+                }
+            
+                
+            } catch{ }
         
         return true
     }
@@ -369,6 +373,7 @@ class hotPointTool: NSObject {
                 // 保存 frame 的数据
                 let strFrame = str.data(using: String.Encoding.isoLatin2)!
                 
+                // 拼接完整 xml 数据
                 let newData = newStr.data(using: String.Encoding.utf8)! + strFrame
                 
                 // 写入 覆盖

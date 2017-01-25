@@ -235,7 +235,7 @@ class hotPointTool: NSObject {
                 
                 let alert = NSAlert.init()
                 alert.messageText.append("温馨提醒：")
-                alert.informativeText = "请保持\(xmlFiles[index]).xml与对应的png名称的统一"
+                alert.informativeText = "请保持:  \(xmlFiles[index]).xml与对应的png名称的统一"
                 alert.showsSuppressionButton = true
                 alert.runModal()
                 

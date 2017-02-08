@@ -26,6 +26,7 @@
 		3D692F731E4B2923000AAE6C /* CSVError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D692F6B1E4B2923000AAE6C /* CSVError.swift */; };
 		3D692F741E4B2923000AAE6C /* Endian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D692F6D1E4B2923000AAE6C /* Endian.swift */; };
 		3D692F751E4B2923000AAE6C /* UnicodeIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D692F6E1E4B2923000AAE6C /* UnicodeIterator.swift */; };
+		3D692F771E4B2C2E000AAE6C /* location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D692F761E4B2C2E000AAE6C /* location.swift */; };
 		3D82B4971E1C9DCB00B0A519 /* example.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D82B4961E1C9DCB00B0A519 /* example.png */; };
 		3D8E6E001E13DBAD00413FEC /* ToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E6DFF1E13DBAD00413FEC /* ToolView.swift */; };
 		3DEACB621DEEA78300750DC3 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEACB5C1DEEA78300750DC3 /* Document.swift */; };
@@ -82,6 +83,7 @@
 		3D692F6C1E4B2923000AAE6C /* CSVVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSVVersion.h; sourceTree = "<group>"; };
 		3D692F6D1E4B2923000AAE6C /* Endian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endian.swift; sourceTree = "<group>"; };
 		3D692F6E1E4B2923000AAE6C /* UnicodeIterator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnicodeIterator.swift; sourceTree = "<group>"; };
+		3D692F761E4B2C2E000AAE6C /* location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = location.swift; sourceTree = "<group>"; };
 		3D82B4961E1C9DCB00B0A519 /* example.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = example.png; sourceTree = "<group>"; };
 		3D8E6DFF1E13DBAD00413FEC /* ToolView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolView.swift; sourceTree = "<group>"; };
 		3DEACB5B1DEEA78300750DC3 /* AEXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEXML.h; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				3D692F651E4B2923000AAE6C /* Sources */,
 				3D01149A1E2B69BE00000523 /* AppDelegate.swift */,
 				3D01149C1E2B69BE00000523 /* ViewController.swift */,
+				3D692F761E4B2C2E000AAE6C /* location.swift */,
 				3D0114A71E2B69EC00000523 /* locationCoordinate.swift */,
 				3D01149E1E2B69BE00000523 /* Assets.xcassets */,
 				3D0114A01E2B69BE00000523 /* Main.storyboard */,
@@ -411,6 +414,7 @@
 				3D692F711E4B2923000AAE6C /* CSV+subscript.swift in Sources */,
 				3D0114A81E2B69EC00000523 /* locationCoordinate.swift in Sources */,
 				3D692F6F1E4B2923000AAE6C /* BinaryReader.swift in Sources */,
+				3D692F771E4B2C2E000AAE6C /* location.swift in Sources */,
 				3D692F751E4B2923000AAE6C /* UnicodeIterator.swift in Sources */,
 				3D01149D1E2B69BE00000523 /* ViewController.swift in Sources */,
 				3D692F701E4B2923000AAE6C /* CSV+init.swift in Sources */,

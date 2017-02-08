@@ -12,6 +12,7 @@ class locationCoordinate: NSObject {
     
     override init() {
 
+        
         super.init()
         
         let stream = InputStream(fileAtPath: "/Users/keney/Downloads/地图_20170117135705.csv")!
@@ -53,6 +54,17 @@ class locationCoordinate: NSObject {
             }
             
             newDictAry.append(dict as AnyObject)
+        }
+        
+        
+        // 字典数组转对象数组
+        for (index, _) in newDictAry.enumerated() {
+            
+            
+            let lo = location()
+            let value = newRowAry[index] as Dictionary
+            
+            
         }
         
         print("newDictAry==========================\(newDictAry)")

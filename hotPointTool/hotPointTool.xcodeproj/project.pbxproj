@@ -19,6 +19,13 @@
 		3D1337DE1DC05F4D00A256A6 /* hotPointToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1337DD1DC05F4D00A256A6 /* hotPointToolTests.swift */; };
 		3D1337E91DC05F4D00A256A6 /* hotPointToolUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1337E81DC05F4D00A256A6 /* hotPointToolUITests.swift */; };
 		3D1AEF761DC1ECC5009FDF90 /* hotPointTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1AEF751DC1ECC5009FDF90 /* hotPointTool.swift */; };
+		3D692F6F1E4B2923000AAE6C /* BinaryReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D692F671E4B2923000AAE6C /* BinaryReader.swift */; };
+		3D692F701E4B2923000AAE6C /* CSV+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D692F681E4B2923000AAE6C /* CSV+init.swift */; };
+		3D692F711E4B2923000AAE6C /* CSV+subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D692F691E4B2923000AAE6C /* CSV+subscript.swift */; };
+		3D692F721E4B2923000AAE6C /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D692F6A1E4B2923000AAE6C /* CSV.swift */; };
+		3D692F731E4B2923000AAE6C /* CSVError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D692F6B1E4B2923000AAE6C /* CSVError.swift */; };
+		3D692F741E4B2923000AAE6C /* Endian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D692F6D1E4B2923000AAE6C /* Endian.swift */; };
+		3D692F751E4B2923000AAE6C /* UnicodeIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D692F6E1E4B2923000AAE6C /* UnicodeIterator.swift */; };
 		3D82B4971E1C9DCB00B0A519 /* example.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D82B4961E1C9DCB00B0A519 /* example.png */; };
 		3D8E6E001E13DBAD00413FEC /* ToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E6DFF1E13DBAD00413FEC /* ToolView.swift */; };
 		3DEACB621DEEA78300750DC3 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEACB5C1DEEA78300750DC3 /* Document.swift */; };
@@ -67,6 +74,14 @@
 		3D1337E81DC05F4D00A256A6 /* hotPointToolUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hotPointToolUITests.swift; sourceTree = "<group>"; };
 		3D1337EA1DC05F4D00A256A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D1AEF751DC1ECC5009FDF90 /* hotPointTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hotPointTool.swift; sourceTree = "<group>"; };
+		3D692F671E4B2923000AAE6C /* BinaryReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryReader.swift; sourceTree = "<group>"; };
+		3D692F681E4B2923000AAE6C /* CSV+init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CSV+init.swift"; sourceTree = "<group>"; };
+		3D692F691E4B2923000AAE6C /* CSV+subscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CSV+subscript.swift"; sourceTree = "<group>"; };
+		3D692F6A1E4B2923000AAE6C /* CSV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSV.swift; sourceTree = "<group>"; };
+		3D692F6B1E4B2923000AAE6C /* CSVError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSVError.swift; sourceTree = "<group>"; };
+		3D692F6C1E4B2923000AAE6C /* CSVVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSVVersion.h; sourceTree = "<group>"; };
+		3D692F6D1E4B2923000AAE6C /* Endian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endian.swift; sourceTree = "<group>"; };
+		3D692F6E1E4B2923000AAE6C /* UnicodeIterator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnicodeIterator.swift; sourceTree = "<group>"; };
 		3D82B4961E1C9DCB00B0A519 /* example.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = example.png; sourceTree = "<group>"; };
 		3D8E6DFF1E13DBAD00413FEC /* ToolView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolView.swift; sourceTree = "<group>"; };
 		3DEACB5B1DEEA78300750DC3 /* AEXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AEXML.h; sourceTree = "<group>"; };
@@ -113,6 +128,7 @@
 		3D0114991E2B69BE00000523 /* annotationTool */ = {
 			isa = PBXGroup;
 			children = (
+				3D692F651E4B2923000AAE6C /* Sources */,
 				3D01149A1E2B69BE00000523 /* AppDelegate.swift */,
 				3D01149C1E2B69BE00000523 /* ViewController.swift */,
 				3D0114A71E2B69EC00000523 /* locationCoordinate.swift */,
@@ -177,6 +193,29 @@
 				3D1337EA1DC05F4D00A256A6 /* Info.plist */,
 			);
 			path = hotPointToolUITests;
+			sourceTree = "<group>";
+		};
+		3D692F651E4B2923000AAE6C /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				3D692F661E4B2923000AAE6C /* CSV */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		3D692F661E4B2923000AAE6C /* CSV */ = {
+			isa = PBXGroup;
+			children = (
+				3D692F671E4B2923000AAE6C /* BinaryReader.swift */,
+				3D692F681E4B2923000AAE6C /* CSV+init.swift */,
+				3D692F691E4B2923000AAE6C /* CSV+subscript.swift */,
+				3D692F6A1E4B2923000AAE6C /* CSV.swift */,
+				3D692F6B1E4B2923000AAE6C /* CSVError.swift */,
+				3D692F6C1E4B2923000AAE6C /* CSVVersion.h */,
+				3D692F6D1E4B2923000AAE6C /* Endian.swift */,
+				3D692F6E1E4B2923000AAE6C /* UnicodeIterator.swift */,
+			);
+			path = CSV;
 			sourceTree = "<group>";
 		};
 		3DEACB5A1DEEA78300750DC3 /* Sources */ = {
@@ -369,9 +408,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D692F711E4B2923000AAE6C /* CSV+subscript.swift in Sources */,
 				3D0114A81E2B69EC00000523 /* locationCoordinate.swift in Sources */,
+				3D692F6F1E4B2923000AAE6C /* BinaryReader.swift in Sources */,
+				3D692F751E4B2923000AAE6C /* UnicodeIterator.swift in Sources */,
 				3D01149D1E2B69BE00000523 /* ViewController.swift in Sources */,
+				3D692F701E4B2923000AAE6C /* CSV+init.swift in Sources */,
+				3D692F741E4B2923000AAE6C /* Endian.swift in Sources */,
+				3D692F721E4B2923000AAE6C /* CSV.swift in Sources */,
 				3D01149B1E2B69BE00000523 /* AppDelegate.swift in Sources */,
+				3D692F731E4B2923000AAE6C /* CSVError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,6 +704,7 @@
 				3D0114A51E2B69BE00000523 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3D1337C31DC05F4C00A256A6 /* Build configuration list for PBXProject "hotPointTool" */ = {
 			isa = XCConfigurationList;

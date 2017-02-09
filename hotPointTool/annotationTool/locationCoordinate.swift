@@ -10,9 +10,10 @@ import Cocoa
 
 class locationCoordinate: NSObject {
     
+    var lo = location()
+    var loAry : [location] = []
     override init() {
 
-        
         super.init()
         
         let stream = InputStream(fileAtPath: "/Users/keney/Downloads/地图_20170117135705.csv")!
@@ -53,7 +54,7 @@ class locationCoordinate: NSObject {
                 dict.updateValue(newRowAry[index][idIndex], forKey: idAry[idIndex])
             }
             
-            newDictAry.append(dict as AnyObject)
+            newDictAry.append(dict as [String: String] as AnyObject)
         }
         
         
@@ -61,14 +62,28 @@ class locationCoordinate: NSObject {
         for (index, _) in newDictAry.enumerated() {
             
             
-            let lo = location()
-            let value = newRowAry[index] as Dictionary
+            //print("============%@",newDictAry[index].value(forKey: "name")!)
             
             
+            lo.address = newDictAry[index].value(forKey: "address")! as! String
+            lo.createtime = newDictAry[index].value(forKey: "createtime")! as! String
+            lo.id = newDictAry[index].value(forKey: "id")! as! String
+            lo.lat = newDictAry[index].value(forKey: "lat")! as! String
+            lo.lon = newDictAry[index].value(forKey: "lon")! as! String
+            lo.name = newDictAry[index].value(forKey: "name")! as! String
+            lo.updatetime = newDictAry[index].value(forKey: "updatetime")! as! String
+            
+            loAry.append(lo)
         }
         
-        print("newDictAry==========================\(newDictAry)")
-    
+        //print("newDictAry==========================\(loAry), ------count: \(loAry.count)")
+
+        
+        
+        for item in loAry {
+            
+            print(item.address, item.createtime, item.id, item.name, item.lat, item.lon, item.createtime)
+        }
     }
     
 

@@ -360,7 +360,6 @@ class hotPointTool: NSObject {
         
         do {
             
-            
             let str = try String.init(contentsOfFile: xmlStr, encoding: String.Encoding.isoLatin2)
             
             let originSize = str.substring(with: str.index(str.startIndex, offsetBy: 22)..<str.index(str.startIndex, offsetBy: 36))

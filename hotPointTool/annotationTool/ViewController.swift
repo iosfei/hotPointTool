@@ -14,7 +14,8 @@ class ViewController: NSViewController {
         super.viewDidLoad()
 
         
-        locationCoordinate.init()
+         locationCoordinate.init()
+        
         
         // Do any additional setup after loading the view.
     }

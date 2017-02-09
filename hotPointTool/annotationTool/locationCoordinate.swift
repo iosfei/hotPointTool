@@ -10,8 +10,7 @@ import Cocoa
 
 class locationCoordinate: NSObject {
     
-    var lo = location()
-    var loAry : [location] = []
+   
     override init() {
 
         super.init()
@@ -58,13 +57,12 @@ class locationCoordinate: NSObject {
         }
         
         
+        var loAry : [location] = []
+        
         // 字典数组转对象数组
         for (index, _) in newDictAry.enumerated() {
             
-            
-            //print("============%@",newDictAry[index].value(forKey: "name")!)
-            
-            
+            let lo = location()
             lo.address = newDictAry[index].value(forKey: "address")! as! String
             lo.createtime = newDictAry[index].value(forKey: "createtime")! as! String
             lo.id = newDictAry[index].value(forKey: "id")! as! String
@@ -76,18 +74,14 @@ class locationCoordinate: NSObject {
             loAry.append(lo)
         }
         
-        //print("newDictAry==========================\(loAry), ------count: \(loAry.count)")
-
-        
-        
-        for item in loAry {
+        for (index, _) in loAry.enumerated() {
             
-            print(item.address, item.createtime, item.id, item.name, item.lat, item.lon, item.createtime)
+            print(loAry[index].name, loAry[index].lat, loAry[index].lon, loAry[index].address, loAry[index].createtime, loAry[index].id, loAry[index].createtime)
+            
         }
-    }
-    
+            print("loAry==========================\(loAry)")
 
-    
+    }
 
 }
 

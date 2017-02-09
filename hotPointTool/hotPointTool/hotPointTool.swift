@@ -225,6 +225,22 @@ class hotPointTool: NSObject {
     
     func checkFile()-> Bool{
 
+        
+        
+        // 删除旧的 hotspots 文件夹
+        do {
+            
+            
+            if self.fm.fileExists(atPath: self.newfilePath){
+                
+                try self.fm.removeItem(atPath: self.newfilePath)
+            }
+            
+            
+        } catch{ }
+        
+        
+        // 检查文件名称是否对称
         let xmlFiles = self.getFileNameAryInDirector(fileType:"xml")
         let pngFiles = self.getFileNameAryInDirector(fileType:"png")
     
@@ -245,17 +261,6 @@ class hotPointTool: NSObject {
             
         }
         
-        // 删除旧的 hotspots 文件夹
-            do {
-                
-                
-                if self.fm.fileExists(atPath: self.newfilePath){
-                
-                    try self.fm.removeItem(atPath: self.newfilePath)
-                }
-            
-                
-            } catch{ }
         
         return true
     }

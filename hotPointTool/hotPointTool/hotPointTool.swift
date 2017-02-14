@@ -102,9 +102,6 @@ class hotPointTool: NSObject {
     func getFileNameAryInDirector(fileType: String) -> [String] {
         
         var ary : [String] = []
-        
-        
-        
 
             
             let itemAry = self.foundItemInDirector(fileType:"\(fileType)")

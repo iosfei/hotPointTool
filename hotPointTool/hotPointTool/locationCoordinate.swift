@@ -15,13 +15,15 @@ class locationCoordinate: NSObject {
         return FileManager.default
     }()
     
-    var filePath : String = ""
+    var NewfilePath : String = ""
     
-    override init() {
+     init(filePath: String) {
 
         super.init()
         
-        let stream = InputStream(fileAtPath: "/Users/keney/Downloads/地图_20170209151544.csv")!
+        let stream = InputStream(fileAtPath: filePath)!
+        
+        self.NewfilePath = filePath
         
         var rowAry: [CSV.Element] = []
         
@@ -80,14 +82,18 @@ class locationCoordinate: NSObject {
             loAry.append(lo)
         }
         
-        
         for (index, _) in loAry.enumerated() {
-         
+            
+            
+//            let deleLastPath = self.NewfilePath
+            
+            print("-------------\(fm.componentsToDisplay(forPath: self.NewfilePath))")
             
             let filePath = "/Users/keney/Desktop/" + "\(loAry[index].name)"
            
             do {
                 
+
                 // 1,模块单元创建
                 try fm.createDirectory(atPath: filePath, withIntermediateDirectories: true, attributes: nil)
                 

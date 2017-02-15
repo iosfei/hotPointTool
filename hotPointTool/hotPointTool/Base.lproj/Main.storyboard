@@ -761,9 +761,9 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="nHB-qx-XYZ"/>
                             </imageView>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQW-Qb-qT4">
-                                <rect key="frame" x="14" y="140" width="44" height="17"/>
+                                <rect key="frame" x="14" y="140" width="97" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="示例：" id="lhX-gP-zkO">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="文件样式示例：" id="lhX-gP-zkO">
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -793,7 +793,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4t6-Kg-Dbv">
-                                <rect key="frame" x="12" y="182" width="317" height="25"/>
+                                <rect key="frame" x="12" y="212" width="317" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="拖入需要解析的csv文件， 然后点击右边的按钮^_^" id="aOG-jB-XaN">
                                     <font key="font" metaFont="system"/>
@@ -802,7 +802,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0yb-oS-qyr">
-                                <rect key="frame" x="335" y="188" width="91" height="19"/>
+                                <rect key="frame" x="335" y="218" width="91" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="roundRect" title="Build" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WsK-2M-Pc5">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -812,6 +812,20 @@
                                     <action selector="buildLcationFiles:" target="qFO-Kp-Ghn" id="i1f-Re-jB1"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0i4-ro-cef">
+                                <rect key="frame" x="14" y="167" width="107" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="CSV示例：" id="7AK-7u-ZPl">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IKb-jp-YQJ">
+                                <rect key="frame" x="10" y="48" width="420" height="111"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="locationExample" id="PXQ-cg-4Rc"/>
+                            </imageView>
                         </subviews>
                         <connections>
                             <outlet property="filePathLabel" destination="4t6-Kg-Dbv" id="25y-NT-kyV"/>
@@ -820,10 +834,11 @@
                 </viewController>
                 <customObject id="eh5-1k-v1D" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="375" y="1217"/>
+            <point key="canvasLocation" x="375" y="1216.5"/>
         </scene>
     </scenes>
     <resources>
         <image name="example" width="177" height="148"/>
+        <image name="locationExample" width="634" height="137"/>
     </resources>
 </document>

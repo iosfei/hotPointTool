@@ -13,6 +13,7 @@
 		3D1337DE1DC05F4D00A256A6 /* hotPointToolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1337DD1DC05F4D00A256A6 /* hotPointToolTests.swift */; };
 		3D1337E91DC05F4D00A256A6 /* hotPointToolUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1337E81DC05F4D00A256A6 /* hotPointToolUITests.swift */; };
 		3D1AEF761DC1ECC5009FDF90 /* hotPointTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1AEF751DC1ECC5009FDF90 /* hotPointTool.swift */; };
+		3D63C18C1E54367000E7D4DB /* locationExample.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D63C18B1E54367000E7D4DB /* locationExample.png */; };
 		3D82B4971E1C9DCB00B0A519 /* example.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D82B4961E1C9DCB00B0A519 /* example.png */; };
 		3D8E6E001E13DBAD00413FEC /* ToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8E6DFF1E13DBAD00413FEC /* ToolView.swift */; };
 		3D9B8FD31E52E23100514EF3 /* hotPointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9B8FD21E52E23100514EF3 /* hotPointViewController.swift */; };
@@ -59,6 +60,7 @@
 		3D1337E81DC05F4D00A256A6 /* hotPointToolUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hotPointToolUITests.swift; sourceTree = "<group>"; };
 		3D1337EA1DC05F4D00A256A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D1AEF751DC1ECC5009FDF90 /* hotPointTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hotPointTool.swift; sourceTree = "<group>"; };
+		3D63C18B1E54367000E7D4DB /* locationExample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = locationExample.png; sourceTree = "<group>"; };
 		3D82B4961E1C9DCB00B0A519 /* example.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = example.png; sourceTree = "<group>"; };
 		3D8E6DFF1E13DBAD00413FEC /* ToolView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolView.swift; sourceTree = "<group>"; };
 		3D9B8FD21E52E23100514EF3 /* hotPointViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hotPointViewController.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 		3DEACB691DEEC3B500750DC3 /* hotspotdatafile */ = {
 			isa = PBXGroup;
 			children = (
+				3D63C18B1E54367000E7D4DB /* locationExample.png */,
 				3D82B4961E1C9DCB00B0A519 /* example.png */,
 			);
 			name = hotspotdatafile;
@@ -326,6 +329,7 @@
 				3D1337D01DC05F4D00A256A6 /* Assets.xcassets in Resources */,
 				3D82B4971E1C9DCB00B0A519 /* example.png in Resources */,
 				3D1337D31DC05F4D00A256A6 /* Main.storyboard in Resources */,
+				3D63C18C1E54367000E7D4DB /* locationExample.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

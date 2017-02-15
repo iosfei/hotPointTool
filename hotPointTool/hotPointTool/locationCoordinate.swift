@@ -82,18 +82,15 @@ class locationCoordinate: NSObject {
             loAry.append(lo)
         }
         
+        
+        
         for (index, _) in loAry.enumerated() {
-            
-            
-//            let deleLastPath = self.NewfilePath
-            
-            print("-------------\(fm.componentsToDisplay(forPath: self.NewfilePath))")
-            
-            let filePath = "/Users/keney/Desktop/" + "\(loAry[index].name)"
            
             do {
                 
-
+                let deskTopPath = fm.urls(for: .desktopDirectory, in: .userDomainMask)[0]
+                let filePath = deskTopPath.path + "/LocationoutPut" + "/\(loAry[index].name)"
+                
                 // 1,模块单元创建
                 try fm.createDirectory(atPath: filePath, withIntermediateDirectories: true, attributes: nil)
                 

@@ -95,6 +95,8 @@ class locationView: NSView, NSTextFieldDelegate, NSTextDelegate {
         
         self.filePath = path
         
+        
+        
         return true
     }
 

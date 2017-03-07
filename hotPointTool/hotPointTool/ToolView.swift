@@ -79,20 +79,33 @@ class ToolView: NSView, NSTextFieldDelegate, NSTextDelegate {
             let path = board[0] as? String
             else { return false }
         
-        /*
-         let suffix = URL(fileURLWithPath: path).pathExtension
-         for ext in self.expectedExt {
-         if ext.lowercased() == suffix {
-         return true
-         }
-         }
-         */
         
-        self.ToolfilePath = URL(fileURLWithPath: path).path
+        var isDir: ObjCBool = false
         
-        self.filePathLabel.stringValue = self.ToolfilePath!
+        let fm = FileManager.default
+        if fm.fileExists(atPath: path, isDirectory: &isDir){
         
-        self.filePathLabel.lineBreakMode = NSLineBreakMode.byTruncatingMiddle
+            if isDir.boolValue {
+            
+                self.ToolfilePath = URL(fileURLWithPath: path).path
+                
+                self.filePathLabel.stringValue = self.ToolfilePath!
+                
+                self.filePathLabel.lineBreakMode = NSLineBreakMode.byTruncatingMiddle
+                
+            }else{
+            
+            }
+         
+            
+        }
+        
+        
+        if path.hasSuffix("csv") || path.hasSuffix("swfit") || path.hasSuffix("excel") || path.hasSuffix("word"){
+        
+        }else{
+            
+        }
 
         
         return false

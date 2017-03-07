@@ -72,11 +72,15 @@ class locationView: NSView, NSTextFieldDelegate, NSTextDelegate {
          }
          */
         
-        self.filePath = URL(fileURLWithPath: path).path
-
-        self.filePathLabel.stringValue = self.filePath
+        if path.hasSuffix("csv"){
+            
+            self.filePath = URL(fileURLWithPath: path).path
+            
+            self.filePathLabel.stringValue = self.filePath
+            
+            self.filePathLabel.lineBreakMode = NSLineBreakMode.byTruncatingMiddle
         
-        self.filePathLabel.lineBreakMode = NSLineBreakMode.byTruncatingMiddle
+        }
         return false
     }
     

@@ -23,7 +23,9 @@ class locationView: NSView, NSTextFieldDelegate, NSTextDelegate {
         
         if self.filePath.hasSuffix("csv"){
             
-            locationCoordinate.init(filePath:self.filePath)
+            let lo = locationCoordinate.init()
+            lo.creatLocationFile(filePath: self.filePath)
+            
         }
         
     }

@@ -15,15 +15,17 @@ class locationCoordinate: NSObject {
         return FileManager.default
     }()
     
-    var NewfilePath : String = ""
-    
-     init(filePath: String) {
-
+   override init() {
+        
         super.init()
         
-        let stream = InputStream(fileAtPath: filePath)!
+    }
+    
+    
+ func creatLocationFile(filePath: String) {
         
-        self.NewfilePath = filePath
+
+        let stream = InputStream(fileAtPath: filePath)!
         
         var rowAry: [CSV.Element] = []
         
@@ -48,6 +50,7 @@ class locationCoordinate: NSObject {
             }
             
         }
+    
         
         // 组合行数据成字典数组
         var newDictAry : [AnyObject] = []
@@ -81,9 +84,10 @@ class locationCoordinate: NSObject {
             
             loAry.append(lo)
         }
- 
+        
+        
         for (index, _) in loAry.enumerated() {
-           
+            
             do {
                 
                 let deskTopPath = fm.urls(for: .desktopDirectory, in: .userDomainMask)[0]
@@ -114,5 +118,6 @@ class locationCoordinate: NSObject {
         }
         
     }
-
+    
+    
 }

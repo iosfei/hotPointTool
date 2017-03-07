@@ -81,9 +81,7 @@ class locationCoordinate: NSObject {
             
             loAry.append(lo)
         }
-        
-        
-        
+ 
         for (index, _) in loAry.enumerated() {
            
             do {

@@ -95,18 +95,11 @@ class ToolView: NSView, NSTextFieldDelegate, NSTextDelegate {
                 
             }else{
             
+                
             }
          
             
         }
-        
-        
-        if path.hasSuffix("csv") || path.hasSuffix("swfit") || path.hasSuffix("excel") || path.hasSuffix("word"){
-        
-        }else{
-            
-        }
-
         
         return false
     }

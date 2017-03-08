@@ -10,20 +10,27 @@ import Cocoa
 
 class locationCoordinate: NSObject {
     
+    // 地理位置文件转成对象的集合
+    var loAry : [location] = []
+    
+    // 桌面的文件路径
+    let deskTopPath = FileManager.default.urls(for: .desktopDirectory, in: .userDomainMask)[0]
+    
+
     lazy var fm: FileManager = {
         
         return FileManager.default
     }()
     
+    
    override init() {
-        
+    
         super.init()
-        
+    
     }
     
-    
- func creatLocationFile(filePath: String) {
-        
+    // 创建地理编码结构
+    func creatLocationFile(filePath: String) {
 
         let stream = InputStream(fileAtPath: filePath)!
         
@@ -67,9 +74,6 @@ class locationCoordinate: NSObject {
             newDictAry.append(dict as [String: String] as AnyObject)
         }
         
-        
-        var loAry : [location] = []
-        
         // 字典数组转对象数组
         for (index, _) in newDictAry.enumerated() {
             
@@ -81,16 +85,15 @@ class locationCoordinate: NSObject {
             lo.lon = newDictAry[index].value(forKey: "lon")! as! String
             lo.name = newDictAry[index].value(forKey: "name")! as! String
             lo.updatetime = newDictAry[index].value(forKey: "updatetime")! as! String
-            
+
             loAry.append(lo)
         }
-        
+    
         
         for (index, _) in loAry.enumerated() {
             
             do {
                 
-                let deskTopPath = fm.urls(for: .desktopDirectory, in: .userDomainMask)[0]
                 let filePath = deskTopPath.path + "/LocationoutPut" + "/\(loAry[index].name)"
                 
                 // 1,模块单元创建
@@ -116,6 +119,10 @@ class locationCoordinate: NSObject {
             } catch let error {   print(error)  }
             
         }
+    
+    
+    
+    
         
     }
     

@@ -81,6 +81,19 @@ class locationView: NSView, NSTextFieldDelegate, NSTextDelegate {
             self.filePathLabel.lineBreakMode = NSLineBreakMode.byTruncatingMiddle
         
         }
+        
+        
+        
+        
+        for bPath in board {
+            
+            s
+        }
+        
+        
+        
+        
+        
         return false
     }
     

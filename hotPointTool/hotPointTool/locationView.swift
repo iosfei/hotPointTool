@@ -9,14 +9,15 @@
 import Cocoa
 
 class locationView: NSView, NSTextFieldDelegate, NSTextDelegate {
-
+    
     
     var filePath : String = ""
     
+    var filePathS = [String]()
     
     @IBOutlet weak var filePathLabel: NSTextField!
     
-
+    
     
     @IBAction func buildLcationFiles(_ sender: NSButton) {
         
@@ -24,7 +25,7 @@ class locationView: NSView, NSTextFieldDelegate, NSTextDelegate {
         if self.filePath.hasSuffix("csv"){
             
             let lo = locationCoordinate.init()
-            lo.creatLocationFile(filePath: self.filePath)
+            lo.creatLocationFile(filePathS: self.filePathS)
             
         }
         
@@ -79,21 +80,11 @@ class locationView: NSView, NSTextFieldDelegate, NSTextDelegate {
             self.filePathLabel.stringValue = self.filePath
             
             self.filePathLabel.lineBreakMode = NSLineBreakMode.byTruncatingMiddle
-        
-        }
-        
-        
-        
-        
-        for bPath in board {
             
-            s
+            self.filePathS = board as! [String]
         }
         
-        
-        
-        
-        
+
         return false
     }
     
@@ -118,5 +109,5 @@ class locationView: NSView, NSTextFieldDelegate, NSTextDelegate {
         
         return true
     }
-
+    
 }

@@ -435,13 +435,36 @@ class hotPointTool: NSObject {
             
              do{
              
+                // 创建项目文件夹
                 try self.fm.createDirectory(atPath: xmlObjectPath, withIntermediateDirectories: true, attributes: nil)
+                
+                // 创建placemarklayout.xml文件
                 try self.fm.copyItem(atPath: paths[index], toPath: "/\(xmlObjectPath)/" + "placemarklayout.xml")
              
+                // 创建config.xml文件
+                let configStr = "<root>" + "\n" +
+                "<type>AnimationGenerator</type>" + "\n" +
+                "<name>\(fileAry[index])</name>" + "\n" +
+                "<dataFile>datafile.xml</dataFile>" + "\n" +
+                "</root>"
+
+                 self.fm.createFile(atPath: "/\(xmlObjectPath)/" + "config.xml", contents: configStr.data(using: String.Encoding.utf8), attributes: nil)
+                
+                
+                
+                // 拷贝 datafile.xml 文件到这里
+                
+                let bundle = Bundle.main.path(forResource: "datafile", ofType: "xml")
+                
+               try self.fm.copyItem(atPath: bundle!, toPath: "/\(xmlObjectPath)/" + "datafile.xml")
+                
              }catch let error{
 
                 print(error)
             }
+            
+            
+            
 
         }
     }

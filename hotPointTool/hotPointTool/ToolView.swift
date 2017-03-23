@@ -16,6 +16,8 @@ class ToolView: NSView, NSTextFieldDelegate, NSTextDelegate {
     
     @IBOutlet weak var filePathLabel: NSTextField!
     
+    
+    // png图片格式的热点
     @IBAction func createHotFile(_ sender: Any) {
         
         guard self.ToolfilePath?.isEmpty == nil else {
@@ -26,24 +28,49 @@ class ToolView: NSView, NSTextFieldDelegate, NSTextDelegate {
             
             vc.newfilePath = vc.filePath + "/\(vc.hotspots)"
             
-            guard  !vc.checkFile() else{
-            
-                vc.creatFile()
-                
-                vc.copyFileToObject()
-                
-                vc.getPngMessges()
-                
-                vc.getXMLOriginSize()
-            
-                return
-            }
+             guard  !vc.checkFile() else{
+             
+             vc.creatFile()
+             
+             vc.copyFileToObject()
+             
+             vc.getPngMessges()
+             
+             vc.getXMLOriginSize()
+             
+             return
+             }
             
             
             return
         }
         
     }
+    
+    
+    
+    // 自定义热点文件路径label
+    @IBOutlet weak var xmlHotPointLabel: NSTextField!
+    
+    
+    // 创建自定义热点文件结构
+    @IBAction func creatXmlHotPointFile(_ sender: NSButton) {
+        
+        
+        guard self.ToolfilePath?.isEmpty == nil else {
+        
+            let vc = hotPointTool.init()
+            vc.filePath = self.ToolfilePath!
+            vc.newfilePath = vc.filePath + "/\(vc.hotspots)"
+            
+            vc.getOnlyXmlFiles()
+            
+            return
+        }
+        
+    }
+    
+
     
     
     required init?(coder: NSCoder) {

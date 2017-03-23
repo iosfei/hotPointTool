@@ -52,6 +52,7 @@ class hotPointTool: NSObject {
         
     }
     
+    
     // hasSuffix's file
     func foundItemInDirector(fileType:String) -> [String] {
         
@@ -61,33 +62,42 @@ class hotPointTool: NSObject {
             
             let contentFiles = try self.fm.contentsOfDirectory(atPath: self.filePath)
             
+            
             for item in contentFiles{
                 
-                switch fileType {
-                case "xml":
-                    if item.hasSuffix("xml"){
-                        
-                        fileAry.append(item)
-                    }
-                    
-                case "png":
-                    
-                    if item.hasSuffix("png"){
-                        
-                        fileAry.append(item)
-                        
-                    }
-                    
-                case "other":
-                    if fileType == "other"{
-                        
-                        fileAry.append(item)
-                        
-                    }
-                    
-                default: break
-                }
                 
+                if item.components(separatedBy: "camera").count > 1{
+                    
+                    // 包含camera.xml 文件
+                    
+                }else{
+                
+                    switch fileType {
+                    case "xml":
+                        if item.hasSuffix("xml"){
+                            
+                            fileAry.append(item)
+                        }
+                        
+                    case "png":
+                        
+                        if item.hasSuffix("png"){
+                            
+                            fileAry.append(item)
+                            
+                        }
+                        
+                    case "other":
+                        if fileType == "other"{
+                            
+                            fileAry.append(item)
+                            
+                        }
+                        
+                    default: break
+                    }
+                    
+                }
                 
             }
             
@@ -184,35 +194,46 @@ class hotPointTool: NSObject {
                 
                 for item in newUrls {
                     
-                switch fileType {
                     
-                case "xml":
-                    if item.absoluteString.hasSuffix("xml"){
+                    if item.path.components(separatedBy: "camera").count > 1{
                         
-                        itemUrl.append(item.path)
-
-                    }
-
-                case "png":
-                    
-                    if item.absoluteString.hasSuffix("png"){
+                        // 包含camera.xml 文件
                         
-                        itemUrl.append(item.path)
+                    }else{
+                    
+                        // 过滤camera文件
+                        
+                        switch fileType {
+                            
+                        case "xml":
+                            if item.absoluteString.hasSuffix("xml"){
+                                
+                                itemUrl.append(item.path)
+                                
+                            }
+                            
+                        case "png":
+                            
+                            if item.absoluteString.hasSuffix("png"){
+                                
+                                itemUrl.append(item.path)
+                            }
+                            
+                        case "hotspots":
+                            
+                            if !item.absoluteString.hasSuffix("png") || !item.absoluteString.hasSuffix("xml"){
+                                
+                                itemUrl.append(item.path)
+                                
+                            }
+                            
+                            
+                        default: break
+                        }
+                        
                     }
-                
-                case "hotspots":
-                    
-                    if !item.absoluteString.hasSuffix("png") || !item.absoluteString.hasSuffix("xml"){
-                    
-                       itemUrl.append(item.path)
-
-                    }
-                    
-                    
-                default: break
-                }
             
-                    }
+                }
                 
             } catch {}
         
@@ -394,6 +415,41 @@ class hotPointTool: NSObject {
         
     }
     
+    
+    
+    // 纯xml文件， 创建热点结构
+    func getOnlyXmlFiles(){
+        
+        let paths = getItemUrlPath(fileType:"xml")
+        
+        self.fileAry = self.getFileNameAryInDirector(fileType:"xml")
+        
+        
+        for item in paths{
+        
+            
+            
+            /*
+             
+             for fileName in self.fileAry {
+             
+             let xmlFilePath = newfilePath +  "/" + fileName
+             
+             
+             do{
+             
+             try self.fm.createDirectory(atPath: self.newfilePath, withIntermediateDirectories: true, attributes: nil)
+             
+             
+             }
+             
+             }
+             
+             */
+            
+            
+        }
+    }
     
 }
 

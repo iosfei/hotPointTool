@@ -1,0 +1,73 @@
+<root>
+		<property>
+		<setter key="scaleTo:" value="{2,2}"/>
+		<setter key="userInteractionEnabled" value="YES"/>
+	</property>
+		
+	<element type="IMView">
+		<command type="SequenceFramesSceneMapElementBind">
+			<placemakr layoutSource="placemarklayout.xml" imageBindMode="2" annotation="YES"></placemakr>
+		</command>
+		
+		<!--线段-->
+		<element type="IMView">
+			<property>
+				
+                <setter key="backgroundColor" value="#0b8aab" />
+				<setter key="sizeToFit" />
+				<setter key="anchorPoint" value="{.5,1}"/>
+				<setter key="height" value="0"/>
+				<setter key="center" value="{0,10}" />
+			</property>
+			
+			<animationStart duration=".5" >
+				<property>
+					<setter key="height" value="55" />
+					<setter key="center" value="{0,10}" />
+				</property>
+			</animationStart>
+		</element>
+		<element type="IMButton">
+			<property>
+                <setter key="backgroundColor" value="#0b8aab"/>
+				<setter key="normalTitle" value="${.resourceItem.name}"/>
+                <setter key="normalTitleColor" value="#ffffff" />
+                <setter key="cornerRadius" value="8"/>
+
+				<setter key="titleFont" value="{14}"/>
+				<setter key="sizeToFit" />
+                
+                <setter key="size" value="{130, 30}"/>
+
+				<setter key="center" value="{0,-60}" />
+			</property>
+			<property>
+				<setter key="scaleTo:" value="{0,0}"/>
+			</property>  
+			<animationStart duration=".4" delay=".3" springDamping=".4" springInitialVelocity="12">
+				<property>
+					<setter key="scaleTo:" value="{1,1}"/>
+				</property>
+			</animationStart>
+            <command type="actionEvent" param="64">
+                <command type="PresentModule" presentationFrame="{{0,0},{1024,768}}" modulePath="subs/图集" animated="YES">
+                    <closeButton frame="{{8, 8},{60,60}}">
+                        <title state="0" value=" " />
+                        <backgroundImage state="0" value="images/closeButton.png" />
+                    </closeButton>
+                </command>
+            </command>
+		</element>
+          
+          <element type="IMView" >
+              <property>
+                  <setter key="backgroundColor" value="#0b8aab"/>
+                  <setter key="size" value="{8,8}"/>
+                  <setter key="cornerRadius" value="4"/>
+                  <setter key="clipsToBounds" value="YES"/>
+                  <setter key="anchorPoint" value="{.5,1}"/>
+                  <setter key="center" value="{0,10}" />
+              </property>
+          </element>
+	</element>
+</root>

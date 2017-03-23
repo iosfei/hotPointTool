@@ -423,31 +423,26 @@ class hotPointTool: NSObject {
         let paths = getItemUrlPath(fileType:"xml")
         
         self.fileAry = self.getFileNameAryInDirector(fileType:"xml")
+
+        do {
+            try self.fm.createDirectory(atPath: self.newfilePath, withIntermediateDirectories: true, attributes: nil)
         
+        }catch{}
         
-        for item in paths{
+        for (index, _) in paths.enumerated(){
         
+             let xmlObjectPath = self.newfilePath +  "/\(fileAry[index])"
             
-            
-            /*
-             
-             for fileName in self.fileAry {
-             
-             let xmlFilePath = newfilePath +  "/" + fileName
-             
-             
              do{
              
-             try self.fm.createDirectory(atPath: self.newfilePath, withIntermediateDirectories: true, attributes: nil)
+                try self.fm.createDirectory(atPath: xmlObjectPath, withIntermediateDirectories: true, attributes: nil)
+                try self.fm.copyItem(atPath: paths[index], toPath: "/\(xmlObjectPath)/" + "placemarklayout.xml")
              
-             
-             }
-             
-             }
-             
-             */
-            
-            
+             }catch let error{
+
+                print(error)
+            }
+
         }
     }
     

@@ -779,7 +779,7 @@
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wR8-Av-J8R">
                                 <rect key="frame" x="16" y="234" width="330" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="拖入xml文件夹， 点击对应的结构   --》 " placeholderString="处理带有png的热点文件：" id="4as-Oz-AXn">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="拖入xml文件夹， 点击右边按钮生成对应的结构   --》 " placeholderString="处理带有png的热点文件：" id="4as-Oz-AXn">
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

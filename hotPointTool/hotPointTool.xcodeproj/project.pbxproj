@@ -27,6 +27,7 @@
 		3D9B8FE81E52E42000514EF3 /* Endian.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9B8FE11E52E42000514EF3 /* Endian.swift */; };
 		3D9B8FE91E52E42000514EF3 /* UnicodeIterator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9B8FE21E52E42000514EF3 /* UnicodeIterator.swift */; };
 		3DB8ADFB1E4D6C2900BFA969 /* locationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB8ADFA1E4D6C2900BFA969 /* locationViewController.swift */; };
+		3DE77D1A1E83AAFC00457C6B /* datafile.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3DE77D191E83AAFC00457C6B /* datafile.xml */; };
 		3DE943181E529BDE00D0CEC4 /* locationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE943171E529BDE00D0CEC4 /* locationView.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		3D9B8FE11E52E42000514EF3 /* Endian.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endian.swift; sourceTree = "<group>"; };
 		3D9B8FE21E52E42000514EF3 /* UnicodeIterator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnicodeIterator.swift; sourceTree = "<group>"; };
 		3DB8ADFA1E4D6C2900BFA969 /* locationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = locationViewController.swift; sourceTree = "<group>"; };
+		3DE77D191E83AAFC00457C6B /* datafile.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = datafile.xml; sourceTree = "<group>"; };
 		3DE943171E529BDE00D0CEC4 /* locationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = locationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -212,6 +214,7 @@
 		3DEACB691DEEC3B500750DC3 /* hotspotdatafile */ = {
 			isa = PBXGroup;
 			children = (
+				3DE77D191E83AAFC00457C6B /* datafile.xml */,
 				3D63C18B1E54367000E7D4DB /* locationExample.png */,
 				3D82B4961E1C9DCB00B0A519 /* example.png */,
 			);
@@ -327,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D1337D01DC05F4D00A256A6 /* Assets.xcassets in Resources */,
+				3DE77D1A1E83AAFC00457C6B /* datafile.xml in Resources */,
 				3D82B4971E1C9DCB00B0A519 /* example.png in Resources */,
 				3D1337D31DC05F4D00A256A6 /* Main.storyboard in Resources */,
 				3D63C18C1E54367000E7D4DB /* locationExample.png in Resources */,

@@ -755,7 +755,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cux-D9-9y7">
-                                <rect key="frame" x="358" y="205" width="134" height="19"/>
+                                <rect key="frame" x="358" y="203" width="134" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="roundRect" title="创建带png的热点结构" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EBF-wt-wcK">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -766,7 +766,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F6P-E7-kG3">
-                                <rect key="frame" x="352" y="255" width="146" height="32"/>
+                                <rect key="frame" x="352" y="232" width="146" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="创建自定义热点结构" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Rcu-8H-fyw">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -777,7 +777,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wR8-Av-J8R">
-                                <rect key="frame" x="16" y="234" width="330" height="27"/>
+                                <rect key="frame" x="10" y="266" width="330" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="拖入xml文件夹， 点击右边按钮生成对应的结构   --》 " placeholderString="处理带有png的热点文件：" id="4as-Oz-AXn">
                                     <font key="font" size="13" name=".PingFangSC-Regular"/>
@@ -785,8 +785,17 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="do3-qj-rlE">
+                                <rect key="frame" x="279" y="241" width="61" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="check" title="可点击" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="VxN-7x-Efy">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                         <connections>
+                            <outlet property="canClick" destination="do3-qj-rlE" id="on1-mz-wrh"/>
                             <outlet property="filePathLabel" destination="wR8-Av-J8R" id="pjA-bK-VjM"/>
                         </connections>
                     </view>

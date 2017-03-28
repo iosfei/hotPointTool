@@ -50,7 +50,7 @@
 				</property>
 			</animationStart>
             <!--<command type="actionEvent" param="64">
-                <command type="PresentModule" presentationFrame="{{0,0},{1024,768}}" modulePath="subs/子目录" animated="YES">
+                <command type="PresentModule" presentationFrame="{{0,0},{1024,768}}" modulePath="subs/${.resourceItem.name}" animated="YES">
                     <closeButton frame="{{8, 8},{60,60}}">
                         <title state="0" value=" " />
                         <backgroundImage state="0" value="images/closeButton.png" />

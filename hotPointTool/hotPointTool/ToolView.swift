@@ -16,6 +16,7 @@ class ToolView: NSView, NSTextFieldDelegate, NSTextDelegate {
     
     @IBOutlet weak var filePathLabel: NSTextField!
     
+    @IBOutlet weak var canClick: NSButton!
     
     // png图片格式的热点
     @IBAction func createHotFile(_ sender: Any) {
@@ -62,10 +63,11 @@ class ToolView: NSView, NSTextFieldDelegate, NSTextDelegate {
             let vc = hotPointTool.init()
             vc.filePath = self.ToolfilePath!
             vc.newfilePath = vc.filePath + "/\(vc.hotspots)"
-            
+            vc.canClick = canClick.state
             vc.getOnlyXmlFiles()
             
             return
+            
         }
         
     }

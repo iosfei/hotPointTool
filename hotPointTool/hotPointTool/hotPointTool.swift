@@ -38,6 +38,9 @@ class hotPointTool: NSObject {
         return FileManager.default
     }()
     
+    
+    var canClick : Int = 0
+    
     override init() {
         
         self.fileAry = []
@@ -423,10 +426,16 @@ class hotPointTool: NSObject {
         let paths = getItemUrlPath(fileType:"xml")
         
         self.fileAry = self.getFileNameAryInDirector(fileType:"xml")
+        
+        // datafile.xml 文件
+        let bundle = Bundle.main.path(forResource: "datafile", ofType: "xml")
+
 
         do {
+            
             try self.fm.createDirectory(atPath: self.newfilePath, withIntermediateDirectories: true, attributes: nil)
-        
+            
+            
         }catch{}
         
         for (index, _) in paths.enumerated(){
@@ -440,23 +449,47 @@ class hotPointTool: NSObject {
                 
                 // 创建placemarklayout.xml文件
                 try self.fm.copyItem(atPath: paths[index], toPath: "/\(xmlObjectPath)/" + "placemarklayout.xml")
-             
-                // 创建config.xml文件
-                let configStr = "<root>" + "\n" +
-                "<type>AnimationGenerator</type>" + "\n" +
-                "<name>\(fileAry[index])</name>" + "\n" +
-                "<dataFile>datafile.xml</dataFile>" + "\n" +
-                "</root>"
+                
+               // 创建config.xml 模块文件
+                let rootConfig = "<root/>"
+                
+                 self.fm.createFile(atPath: "/\(self.newfilePath)/config.xml", contents: rootConfig.data(using: String.Encoding.utf8), attributes: nil)
 
-                 self.fm.createFile(atPath: "/\(xmlObjectPath)/" + "config.xml", contents: configStr.data(using: String.Encoding.utf8), attributes: nil)
+                // 不可点击图标
+                if self.canClick == 0{
+                    
+                    // 创建config.xml文件
+                    let config = "<root>" + "\n" +
+                        "<type>AnimationGenerator</type>" + "\n" +
+                        "<name>\(fileAry[index])</name>" + "\n" +
+                        "<dataFile>scripts/沙盘不可点图标/datafile.xml</dataFile>" + "\n" +
+                    "</root>"
+                    
+                    self.fm.createFile(atPath: "/\(xmlObjectPath)/" + "config.xml", contents: config.data(using: String.Encoding.utf8), attributes: nil)
+                    
+                    
+                    let datafilePath = "/\(self.newfilePath)/scripts/沙盘不可点图标"
+                    try self.fm.createDirectory(atPath: "\(datafilePath)", withIntermediateDirectories: true, attributes: nil)
+                    try self.fm.copyItem(atPath: bundle!, toPath:  "\(datafilePath)/" + "datafile.xml")
+                    
+                }else{
                 
-                
-                
-                // 拷贝 datafile.xml 文件到这里
-                
-                let bundle = Bundle.main.path(forResource: "datafile", ofType: "xml")
-                
-               try self.fm.copyItem(atPath: bundle!, toPath: "/\(xmlObjectPath)/" + "datafile.xml")
+                    // 可点击
+                    
+                    
+                    // 创建config.xml文件
+                    let configStr = "<root>" + "\n" +
+                        "<type>AnimationGenerator</type>" + "\n" +
+                        "<name>\(fileAry[index])</name>" + "\n" +
+                        "<dataFile>datafile.xml</dataFile>" + "\n" +
+                    "</root>"
+                    
+                    self.fm.createFile(atPath: "/\(xmlObjectPath)/" + "config.xml", contents: configStr.data(using: String.Encoding.utf8), attributes: nil)
+                    
+                    
+                    try self.fm.copyItem(atPath: bundle!, toPath:  "/\(xmlObjectPath)/" + "datafile.xml")
+                    
+                }
                 
              }catch let error{
 
